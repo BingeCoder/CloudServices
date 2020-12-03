@@ -12,8 +12,8 @@ AWS.config.update({
 const registerUsingCognito = (fName,lName,emailAddress,password) => {
     console.log("Inside registerUsingCognito");
     const poolData = {
-        UserPoolId : 'us-west-2_UjQBt0S6T',
-        ClientId : '4mg5ictfm4pt63468ud0ou54pb'
+        UserPoolId : 'us-west-2_5yUfbE3sP',
+        ClientId : '2ltld13v2ounfbr2ov04iis7sv'
     }
     const userPool = new amazonCognitoIdentity.CognitoUserPool(poolData);
     const firstName = {

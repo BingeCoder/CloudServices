@@ -3,6 +3,11 @@
     const passwordFld = $('#passwordFld');
     const firstNameFld = $('#firstNameFld');
     const lastNameFld = $('#lastNameFld');
+    const genderFld = $('#genderFld');
+    const phoneNumberFld = $('#phoneNumberFld');
+    const birthDateFld = $('#birthDateFld');
+
+
     const enterCodeFld = $('#enterCodeFld');
     const submitCodeBtn = $('#submitCodeBtn');
     const registerBtn = $('#registerBtn');
@@ -36,6 +41,8 @@
             registrationUnaccessAlert.show();
             return;
         }
+
+
 
         fetch('/register' , {
             method : 'post',
