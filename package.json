@@ -13,5 +13,8 @@
     "jwt-decode": "^3.0.0",
     "mysql": "^2.18.1",
     "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "request": "^2.88.2"
   }
 }

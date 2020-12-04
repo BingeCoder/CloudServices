@@ -13,8 +13,8 @@ AWS.config.update({
 
 function signInUser(email,password) {
     const poolData = {
-        UserPoolId : 'us-west-2_41Wbw5Zr0',
-        ClientId : '48vkpkjjqm03c5l83o2pu2p1sd'
+        UserPoolId : config.cognito.userPoolId,
+        ClientId : config.cognito.clientId
     }
     const userPool = new amazonCognitoIdentity.CognitoUserPool(poolData);
 

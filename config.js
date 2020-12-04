@@ -1,8 +1,8 @@
 module.exports = {
     region: 'us-west-2',
     cognito: {
-        userPoolId: ' us-west-2_46Zj0GJyS',
-        clientId: '2g7t3i00pgiot2o3htd3rmla1u'
+        userPoolId: 'us-west-2_5yUfbE3sP',
+        clientId: '2ltld13v2ounfbr2ov04iis7sv'
     },
     s3: {
         bucketName: 'project-cmpe-281',

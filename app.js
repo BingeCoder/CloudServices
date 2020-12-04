@@ -28,15 +28,17 @@ const getUserDetails = require('./registration/cognitoUserDetails')
 // const updateFilesInDB = require('./database/updateDB')
 // const deleteFilesInDB = require('./database/deleteEntries')
 
-
 app.post('/register', function (req, res) {
     console.log("Received register post request" + req.body);
     const fName = req.body.firstName;
     const lName = req.body.lastName;
+    const pNumber = req.body.phoneNumber;
+    const gender = req.body.gender;
+    const birthdate = req.body.birthDate;
     const email = req.body.emailAddress;
     const pwd = req.body.password;
     console.log("Data received inside app.database "+ fName +" " + lName +" "+ email + " " + pwd);
-    const response = registerUsingCognito(fName,lName,email,pwd);
+    const response = registerUsingCognito(fName,lName,gender,pNumber,birthdate,email,pwd);
     response.then((response)=>{
         req.session['currentUser'] = email;
         req.session.cookie.maxAge = 1800000;
