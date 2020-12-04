@@ -8,8 +8,8 @@
             }
         }).then(response =>
             response.json().then(data => {
-                    //window.location = "login.html";
-               window.location = "http://localhost:3000/login.html";
+                //window.location = "login.html";
+                window.location = "http://localhost:3000/login.html";
             }));
     }
 </script>
@@ -18,38 +18,6 @@
     <a class="navbar-brand" href="#">FindMeABuddy</a>
 
     <div class="navbar-nav ml-auto" id="logout-div">
-<!--        <ul class="navbar-nav mr-auto">-->
-<!--            <li class="nav-item ">-->
-<!--                <a routerLink="/admin" class="nav-item nav-link active" *ngIf="isAdmin">Admin</a>-->
-<!--            </li>-->
-<!--            <li class="nav-item active">-->
-<!--                <a routerLink="/home" class="nav-item nav-link active">Home</a>-->
-<!--            </li>-->
-<!--            <li class="nav-item active">-->
-<!--                <a routerLink="/login" class="nav-item nav-link active" *ngIf="!isLoggedIn">Login</a>-->
-<!--            </li>-->
-<!--            <li class="nav-item active">-->
-<!--                <a routerLink="/register" class="nav-item nav-link active" *ngIf="!isLoggedIn">Register</a>-->
-<!--            </li>-->
-<!--            <li class="nav-item active">-->
-<!--                <a routerLink="/profile/self" *ngIf="isLoggedIn" class="nav-item nav-link active">Profile</a>-->
-<!--            </li>-->
-<!--            <li class="nav-item active">-->
-<!--                <a routerLink="/property/new" *ngIf="isLoggedIn  && isOwner" class="nav-item nav-link active">Post</a>-->
-<!--            </li>-->
-<!--            <li class="nav-item active">-->
-<!--                <a routerLink="/listing/self" *ngIf="isLoggedIn  && isOwner" class="nav-item nav-link active">MyPosting</a>-->
-<!--            </li>-->
-<!--            <li class="nav-item active">-->
-<!--                <a routerLink="/invites/self" *ngIf="isLoggedIn  && isOwner" class="nav-item nav-link active">MyInvites</a>-->
-<!--            </li>-->
-<!--            <li class="nav-item active">-->
-<!--                <a routerLink="/searchproperty" *ngIf="isLoggedIn  && isTenant" class="nav-item nav-link active">Search</a>-->
-<!--            </li>-->
-<!--            <li class="nav-item active">-->
-<!--                <a routerLink="/wishlist/self" *ngIf="isLoggedIn  && isTenant" class="nav-item nav-link active">Wishlist</a>-->
-<!--            </li>-->
-<!--        </ul>-->
         <button id="logoutBtn" class="btn btn-outline-light ">Logout</button>
     </div>
 </nav>

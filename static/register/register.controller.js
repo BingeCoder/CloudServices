@@ -104,11 +104,17 @@
         const fName = window.localStorage.getItem('firstName');
         const lName = window.localStorage.getItem('lastName');
         const email = window.localStorage.getItem('email');
+        const phone = window.localStorage.getItem('phone');
+        const birthDate = window.localStorage.getItem('birthdate');
         fetch('https://eddbusbki1.execute-api.us-west-2.amazonaws.com/dev/adduser', {
             method: 'post',
             body: JSON.stringify({
-                name: fName,
-                user_name: email
+                firstName: fName,
+                lastName: lName,
+                birthDate: birthDate,
+                user_name:email,
+                phoneNumber:phone,
+                interestedSkills: ["basketball","tennis","yoga"]
             }),
             headers: {
                 'content-type': 'application/json'

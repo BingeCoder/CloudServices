@@ -211,11 +211,11 @@ app.get('/cognito/users', function (req, res) {
 //     });
 // });
 //
-// app.post('/logout', function (req, res) {
-//         console.log("logout");
-//         req.session.destroy();
-//         res.send({status: 200});
-// });
+app.post('/logout', function (req, res) {
+        console.log("logout");
+        req.session.destroy();
+        res.send({status: 200});
+});
 
 const server = app.listen(3000);
 
