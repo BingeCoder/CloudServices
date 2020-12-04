@@ -108,7 +108,7 @@ function sendUserDetail(fName,lName,gender,phone,birthDate,emailAddress){
     }
 
     request.post(data, function(error, httpResponse, body){
-        console.log("Sent User Details To Database");
+        console.log("Sent Skills Details To Database");
         console.log(body);
         console.log(httpResponse.toString());
         console.log(error);

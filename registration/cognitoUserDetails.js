@@ -8,7 +8,7 @@ AWS.config.update({
 });
 
 function getUserDetails() {
-    console.log("Get User Details...")
+    console.log("Get Skills Details...")
     const cognitoIdentityService = new AWS.CognitoIdentityServiceProvider({apiVersion: '2016-04-19', region: 'us-west-2'});
 
     const params = {
@@ -18,12 +18,12 @@ function getUserDetails() {
     return new Promise((resolve,reject) => {
         cognitoIdentityService.listUsers(params, (err, data) => {
             if (!err) {
-                console.log('User Details Success...');
+                console.log('Skills Details Success...');
                 console.log(JSON.stringify(data));
                 resolve(data);
 
             } else {
-                console.log('User Details Error...');
+                console.log('Skills Details Error...');
                 console.log(JSON.stringify(err));
                 reject(err);
             }
