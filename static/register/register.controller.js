@@ -124,11 +124,36 @@
                 console.log("DB Insert Success");
                 console.log(response);
                 //window.location = "home.html";
-                window.location = "http://localhost:3000/home.html";
+                addProfilePicInS3();
+               // window.location = "http://localhost:3000/home.html";
             } else {
                 console.log(TAG + "DB Insert Failed");
             }
         });
+    }
+
+    function addProfilePicInS3(){
+        let file = this.files[0];
+        let formData = new FormData();
+        formData.append('file', file);
+
+        fetch('/upload' , {
+            method : 'post',
+            body : formData,
+            headers: {
+                'content-type': 'application/json'
+            }
+        }).then(data =>
+            data.json().then(response => {
+                if(response.status === 200){
+                    console.log(TAG + " Upload Success");
+                    console.log(response);
+                    window.location = "http://localhost:3000/home.html";
+                }
+                else{
+                    console.log(TAG + "Upload Failed");
+                }
+            }));
     }
 
     function signIn(){

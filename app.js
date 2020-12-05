@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser');
 const formidable = require('formidable');
+
 const app = express()
 const TAG = 'App.database';
 var session = require('express-session')
@@ -19,8 +20,8 @@ const registerUsingCognito = require('./registration/registerUser');
 const verifyUser = require('./registration/verifyUser')
 const signInUser = require('./registration/signInUser')
 const getUserDetails = require('./registration/cognitoUserDetails')
-
-// const uploadFilesToS3 = require('./s3_bucket/uploadfileonbucket');
+const uploadFilesToS3 = require('./s3_bucket/uploadfileonbucket');
+const postTwitter = require('./twitter/postTwitter');
 // const deleteFilesFromS3 = require('./s3_bucket/deleteFileFromBucket');
 //
 // const insertIntoDB = require('./database/databaseHandler')
@@ -107,33 +108,41 @@ app.get('/cognito/users', function (req, res) {
     });
 });
 
-// // S3 Related Fetch
-// app.post('/upload', function (req, res) {
-//     // new formidable.IncomingForm().parse(req, (err, fields, files) => {
-//     console.log("Post Upload Request");
-//     const form = new formidable.IncomingForm();
-//     form.parse(req, function(err, fields, files) {
-//         console.log("Post Upload Request");
-//         // console.log(files);
-//         // console.log(files.folder);
-//         // console.log(fields);
-//         console.log(req.session.currentUser);
-//         const response = uploadFilesToS3(files.file, req.session.currentUser);
-//         response.then((response) => {
-//             res.send(response);
-//             console.log(TAG + " Upload Success");
-//             console.log(response);
-//         }, (error) => {
-//             console.log(TAG + " Upload Failed");
-//             console.log(error.statusCode);
-//             console.log(error.response);
-//             res.send(error);
-//         }).catch(() => {
-//             res.send();
-//         });
-//     });
-// });
-//
+app.post('/upload', function (req, res) {
+    // new formidable.IncomingForm().parse(req, (err, fields, files) => {
+    console.log("Post Upload Request");
+    const form = new formidable.IncomingForm();
+    form.parse(req, function(err, fields, files) {
+        console.log("Post Upload Request");
+        // console.log(files);
+        // console.log(files.folder);
+        // console.log(fields);
+        console.log(req.session.currentUser);
+        const response = uploadFilesToS3(files.file, req.session.currentUser);
+        response.then((response) => {
+            res.send(response);
+            console.log(TAG + " Upload Success");
+            console.log(response);
+        }, (error) => {
+            console.log(TAG + " Upload Failed");
+            console.log(error.statusCode);
+            console.log(error.response);
+            res.send(error);
+        }).catch(() => {
+            res.send();
+        });
+    });
+});
+
+app.post('/post', function (req, res) {
+    const promise = postTwitter(req.body);
+    promise.then((response)=>{
+        res.status(200).send(response);
+    },(error)=>{
+        res.send(error.body);
+    });
+});
+
 // app.delete('/delete', function (req, res) {
 //     console.log("Delete Request");
 //     const response =  deleteFilesFromS3(req.body.folder,req.body.name);

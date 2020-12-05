@@ -2,9 +2,9 @@ import Skills from "./models/Skills.js"
 function findActivity() {
     const $skillsTable = $('#skillsTable');
     //const $categoryDropdown = $('#categoryDropdown');
-    const $findSkillBtn = $('#findSkill');
+    const $tweetBtn = $('#tweetBtn');
     $skillsTable.hide();
-    //$findSkillBtn.click(loadTable());
+    $tweetBtn.click(postTweet());
 
     fetch('https://eddbusbki1.execute-api.us-west-2.amazonaws.com/dev/getskills?type=skills_offered', {
         method: 'GET',
@@ -42,5 +42,23 @@ function findActivity() {
             }
         }
         return myList;
+    }
+
+    function postTweet(){
+        const message = "Enterprise Tweet";
+        fetch('/post' , {
+            method : 'post',
+            body : JSON.stringify({status:message}),
+            headers: {
+                'content-type': 'application/json'
+            }
+        }).then(function(response){
+            if(response.status == 200){
+               console.log('Post Tweeted Successfully');
+            }
+            else{
+                console.log('Error occurred:'+response.statusText);
+            }
+        });
     }
 findActivity();

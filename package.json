@@ -12,7 +12,8 @@
     "jquery": "^3.5.1",
     "jwt-decode": "^3.0.0",
     "mysql": "^2.18.1",
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^2.6.1",
+    "twit": "^2.2.11"
   },
   "devDependencies": {
     "request": "^2.88.2"

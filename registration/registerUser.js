@@ -66,9 +66,6 @@ const registerUsingCognito = (fName,lName,gender,phone,birthDate,emailAddress,pa
             }else{
                 console.log("Registration Success: ");
                 console.log(data.user);
-
-                //sendUserDetail(fName,lName,gender,phone,birthDate,emailAddress);
-
                 const response = {
                     username: data.user.username,
                     userConfirmed: data.userConfirmed,
@@ -78,41 +75,6 @@ const registerUsingCognito = (fName,lName,gender,phone,birthDate,emailAddress,pa
                 resolutionFunc(data);
             }
         });
-    });
-}
-
-function sendUserDetail(fName,lName,gender,phone,birthDate,emailAddress){
-    console.log(fName);
-    console.log(lName);
-    console.log(phone);
-    console.log(birthDate);
-    console.log(emailAddress);
-    const reqBody = JSON.stringify({
-        // firstName : fName,
-        // lastName : lName,
-        // phoneNumber : "+01234567890",
-        // birthDate : birthDate,
-        name : fName,
-        user_name : emailAddress
-    });
-    const request = require('request');
-    const url = "https://eddbusbki1.execute-api.us-west-2.amazonaws.com/dev/adduser";
-
-    const data = {
-        url: url,
-        json: true,
-        body: reqBody,
-        headers: {
-            'Content-Type': 'application/json',
-        }
-    }
-
-    request.post(data, function(error, httpResponse, body){
-        console.log("Sent Skills Details To Database");
-        console.log(body);
-        console.log(httpResponse.toString());
-        console.log(error);
-
     });
 }
 
