@@ -24,10 +24,13 @@
 
     function register(){
         console.log(TAG + "Executing Register...")
+        const interestedSkillList = new Array();
         var skills = document.getElementsByName('skills');
         for (var checkbox of skills) {
-            if (checkbox.checked)
+            if (checkbox.checked) {
+                interestedSkillList.push(checkbox.value);
                 console.log(checkbox.value);
+            }
         }
         const firstName = firstNameFld.val();
         const lastName = lastNameFld.val();
@@ -68,6 +71,7 @@
                 window.localStorage.setItem('email', emailAddress);
                 window.localStorage.setItem('phone', phoneNumber);
                 window.localStorage.setItem('birthdate', birthDate);
+                window.localStorage.setItem('interestedSkills', JSON.stringify(interestedSkillList));
                 successAlert.html("Verification Code has been sent to your registered email address. Please enter to proceed.")
                 successAlert.show();
                 registerContainer.hide();

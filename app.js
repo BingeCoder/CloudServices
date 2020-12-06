@@ -118,7 +118,7 @@ app.post('/upload', function (req, res) {
         // console.log(files.folder);
         // console.log(fields);
         console.log(req.session.currentUser);
-        const response = uploadFilesToS3(files.file, req.session.currentUser);
+        const response = uploadFilesToS3(files.file);
         response.then((response) => {
             res.send(response);
             console.log(TAG + " Upload Success");
@@ -141,6 +141,12 @@ app.post('/post', function (req, res) {
     },(error)=>{
         res.send(error.body);
     });
+});
+
+app.post('/logout', function (req, res) {
+    console.log("logout");
+    req.session.destroy();
+    res.send({status: 200});
 });
 
 // app.delete('/delete', function (req, res) {
@@ -220,11 +226,7 @@ app.post('/post', function (req, res) {
 //     });
 // });
 //
-app.post('/logout', function (req, res) {
-        console.log("logout");
-        req.session.destroy();
-        res.send({status: 200});
-});
+
 
 const server = app.listen(3000);
 

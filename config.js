@@ -5,7 +5,7 @@ module.exports = {
         clientId: '2ltld13v2ounfbr2ov04iis7sv'
     },
     s3: {
-        bucketName: 'project-cmpe-281',
+        bucketName: 'find-me-a-buddy',
         apiVersion: '2006-03-01',
         objectUrl: 'https://project-cmpe-281.s3-us-west-2.amazonaws.com/'
     },
