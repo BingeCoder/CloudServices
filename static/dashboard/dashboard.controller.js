@@ -8,6 +8,7 @@
         profileImg[0].src = URL.createObjectURL(this.files[0]);
         let formData = new FormData();
         formData.append('file', file);
+        formData.append('username','gunjan');
 
         fetch('/upload' , {
             method : 'post',

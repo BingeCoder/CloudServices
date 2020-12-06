@@ -7,7 +7,7 @@ AWS.config.update({
 
 const s3 = new AWS.S3({apiVersion: config.s3.apiVersion});
 
-    const uploadFilesToS3= (file) => {
+    const uploadFilesToS3= (file,username) => {
         console.log(TAG + " Upload Files...");
         const filePath = file.path;
         console.log(typeof(file));
@@ -28,7 +28,7 @@ const s3 = new AWS.S3({apiVersion: config.s3.apiVersion});
         uploadParams.Body = fileStream;
         const path = require('path');
         //uploadParams.Key = folder_name+'/' +path.basename(file);
-        uploadParams.Key = path.basename(file.name);
+        uploadParams.Key = username+'/'+path.basename(file.name);
 
         console.log(uploadParams.Body);
         console.log(uploadParams.Key);

@@ -115,10 +115,10 @@ app.post('/upload', function (req, res) {
     form.parse(req, function(err, fields, files) {
         console.log("Post Upload Request");
         // console.log(files);
-        // console.log(files.folder);
+        console.log(fields.username);
         // console.log(fields);
-        console.log(req.session.currentUser);
-        const response = uploadFilesToS3(files.file);
+        // console.log(req.session.currentUser);
+        const response = uploadFilesToS3(files.file,fields.username);
         response.then((response) => {
             res.send(response);
             console.log(TAG + " Upload Success");
