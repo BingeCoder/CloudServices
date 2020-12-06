@@ -4,7 +4,10 @@ function findActivity() {
     //const $categoryDropdown = $('#categoryDropdown');
     const $tweetBtn = $('#tweetBtn');
     $skillsTable.hide();
-    $tweetBtn.click(postTweet());
+    $tweetBtn.click(getCognitoUserDetails());
+
+
+
 
     fetch('https://eddbusbki1.execute-api.us-west-2.amazonaws.com/dev/getskills?type=skills_offered', {
         method: 'GET',
@@ -21,6 +24,29 @@ function findActivity() {
                 console.log("Skills Fetched Failed");
             }
         }));
+    }
+
+    function getCognitoUserDetails(){
+        fetch('/cognito/users' ,{
+            method : 'get',
+            headers: {
+                'content-type': 'application/json'
+            }
+        }).then(response =>
+            response.json().then(data => ({
+                    files: data,
+                    status: response.status
+                })
+            ).then(response => {
+                if(response.status === 200){
+                    console.log("Cognito User Fetch Success");
+                    console.log(response.files);
+                    //loadAdminTable(response.files);
+                }
+                else{
+                    console.log("Cognito User Fetch Failed");
+                }
+            }));
     }
 
     function getSkills(usersList , selectedCategory, userName){
