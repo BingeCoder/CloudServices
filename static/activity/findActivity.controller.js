@@ -1,4 +1,4 @@
-import Skills from "./models/Skills.js"
+import Skills from "../models/Skills.js"
 function findActivity() {
     const $skillsTable = $('#skillsTable');
     //const $categoryDropdown = $('#categoryDropdown');

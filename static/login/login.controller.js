@@ -33,7 +33,7 @@
                 window.localStorage.setItem('lastName', data.response.idToken.payload.family_name);
                 window.localStorage.setItem('email', data.response.idToken.payload.email);
                     //window.location = "home.html";
-                    window.location= "http://localhost:3000/home.html";
+                    window.location= "http://localhost:3000/dashboard.html";
             }));
     }
 })();

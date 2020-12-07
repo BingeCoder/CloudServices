@@ -94,7 +94,8 @@
                 if(response.status === 200){
                     console.log(TAG + " Verification Success");
                     console.log(response);
-                    addUserInDB();
+                    window.location = "http://localhost:3000/dashboard.html"
+                    //addUserInDB();
                 }
                 else{
                     console.log(TAG + "Verification Failed");
