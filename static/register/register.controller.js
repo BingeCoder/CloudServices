@@ -72,6 +72,8 @@
                 window.localStorage.setItem('phone', phoneNumber);
                 window.localStorage.setItem('birthdate', birthDate);
                 window.localStorage.setItem('interestedSkills', JSON.stringify(interestedSkillList));
+                const skills = window.localStorage.getItem('interestedSkills');
+                console.log(skills);
                 successAlert.html("Verification Code has been sent to your registered email address. Please enter to proceed.")
                 successAlert.show();
                 registerContainer.hide();
@@ -94,8 +96,7 @@
                 if(response.status === 200){
                     console.log(TAG + " Verification Success");
                     console.log(response);
-                    window.location = "http://localhost:3000/dashboard.html"
-                    //addUserInDB();
+                    addUserInDB();
                 }
                 else{
                     console.log(TAG + "Verification Failed");
@@ -111,15 +112,18 @@
         const email = window.localStorage.getItem('email');
         const phone = window.localStorage.getItem('phone');
         const birthDate = window.localStorage.getItem('birthdate');
+        const skills = window.localStorage.getItem('interestedSkills');
+        console.log(skills);
         fetch('https://eddbusbki1.execute-api.us-west-2.amazonaws.com/dev/adduser', {
             method: 'post',
             body: JSON.stringify({
-                firstName: fName,
-                lastName: lName,
-                birthDate: birthDate,
+                first_name: fName,
+                last_name: lName,
+                birth_Date: birthDate,
                 user_name:email,
-                phoneNumber:phone,
-                interestedSkills: ["basketball","tennis","yoga"]
+                phone:phone,
+                picture:"/Users/gunjansrivastava/Desktop/EnterpriseProj/EnterpriseProject/drawables.upload.png",
+                interests: skills
             }),
             headers: {
                 'content-type': 'application/json'
@@ -129,8 +133,7 @@
                 console.log("DB Insert Success");
                 console.log(response);
                 //window.location = "home.html";
-                addProfilePicInS3();
-               // window.location = "http://localhost:3000/home.html";
+                window.location = "http://localhost:3000/dashboard.html"
             } else {
                 console.log(TAG + "DB Insert Failed");
             }
