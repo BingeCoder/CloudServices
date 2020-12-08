@@ -1,10 +1,14 @@
 //Global Variables
-var user_name = "daniel@gmail.com";
+document.getElementById("fname").innerHTML = window.localStorage.getItem("firstName");
+document.getElementById("lname").innerHTML = window.localStorage.getItem("lastName");
+document.getElementById("phone").innerHTML = window.localStorage.getItem("phone");
+document.getElementById("email").innerHTML = window.localStorage.getItem("email");
+var user_name = window.localStorage.getItem('email');;
 const fileInput = $('#imgInput');
 const profileImg = $('#profileImg');
 
 fileInput.change(addProfilePicInS3)
-
+console.log("this is from the dashboard controller");
 function getActivityCreated() {
   fetch("https://eddbusbki1.execute-api.us-west-2.amazonaws.com/dev/getskills?type=skills_offered&user_name="+ user_name)
     .then((response) => response.json())
@@ -70,7 +74,7 @@ function getActivitySignedUpFor() {
         var time = item.time;
         var desc = item.desc;
         var capacity = item.capacity;
-        var name = data.Items[0].name;
+        //var name = data.Items[0].name;
         
         var userHTML = `<div class="col-sm-4 mb-3">
                               <div class="card h-100">
@@ -81,7 +85,7 @@ function getActivitySignedUpFor() {
                                   <h6>Description: <span>` + desc + `</span> </h6>
                                   <h6>Time: <span>` + time + `</span> </h6> 
                                   <h6 class="capitalize">Capacity: <span>` + capacity + `</span> </h6> 
-                                  <h6 class="capitalize">Offered by: <span>` + name + `</span> </h6> 
+                                  
                                 </div>
                               </div>
                             </div>`;
@@ -173,19 +177,20 @@ async function postData(data, url) {
   }
 }
 
-async function addInterestedSkill(username, category, activity_name, time, desc, capacity) {
+async function addInterestedSkill(username, category, activity_name, offerer_name, time, desc, capacity) {
   //console.log(username, category, activity_name, time, desc, capacity);
   let data = {
     "user_name": username,
     "skill": {
       "category" : category,
-      "activity_name" : activity_name,
+      "activity_name" : activity_name + ':' + offerer_name,
       "time" : time,
       "desc" : desc,
       "capacity" : capacity
     }
   };
-  /*console.log("Data: " + JSON.stringify(data)); */
+  console.log("Data: " + JSON.stringify(data)); 
+  
   let url = "https://eddbusbki1.execute-api.us-west-2.amazonaws.com/dev/addinterestedskill";
 
   var postResponse = await postData(data, url);
@@ -242,9 +247,9 @@ function getActivityBasedOnCategory(OfferedList, selectedCategory, userName) {
   $("#actOffered").empty()
   for (let i = 0; i < OfferedList.length; i++) {
       var activity = OfferedList[i];
-      //console.log("This is the Activity:", activity);
+      console.log("This is the Activity:", activity);
       var email = activity.user_name;
-      
+      //alert(email);
       if (email !== userName) {
         //console.log(email);
         //console.log(activity.skills_offered);
@@ -273,8 +278,8 @@ function getActivityBasedOnCategory(OfferedList, selectedCategory, userName) {
                                   <h6 class="capitalize">Capacity: <span>` + capacity + `</span> </h6> 
                                   <h6 class="capitalize">Offered By: <span>` + name + `</span> </h6> 
                                   <button type="button" 
-                                  onclick = "addInterestedSkill('${email}', '${category}','${activity_name}','${time}','${desc}','${capacity}')" 
-                                  class="btn btn-info">Join Activity</button>
+                                  onclick = "addInterestedSkill('${userName}', '${category}','${activity_name}' , '${activity.user_name}','${time}','${desc}','${capacity}, ')" 
+                                  class="btn btn-info">Enroll</button>
                                 </div>
                               </div>
                             </div>`;

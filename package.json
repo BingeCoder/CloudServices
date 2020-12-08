@@ -1,8 +1,8 @@
 {
   "name": "cloud_project1",
   "version": "1.0.0",
-  "scripts":{
-    "test":"jest"
+  "scripts": {
+    "test": "jest"
   },
   "dependencies": {
     "amazon-cognito-identity-js": "^4.5.0",
