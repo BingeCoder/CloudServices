@@ -112,10 +112,8 @@
         const email = window.localStorage.getItem('email');
         const phone = window.localStorage.getItem('phone');
         const birthDate = window.localStorage.getItem('birthdate');
-        
-        //Send details to Dashboard
-        document.getElementById("fname").innerHTML = fName;
-
+        const skills = window.localStorage.getItem('interestedSkills');
+        console.log(skills);
 
         fetch('https://eddbusbki1.execute-api.us-west-2.amazonaws.com/dev/adduser', {
             method: 'post',

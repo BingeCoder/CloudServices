@@ -29,6 +29,8 @@ function getUserDetails() {
             }
         });
     });
+
+
 }
 
 module.exports = getUserDetails;
