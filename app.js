@@ -22,6 +22,7 @@ const signInUser = require('./registration/signInUser')
 const getUserDetails = require('./registration/cognitoUserDetails')
 const uploadFilesToS3 = require('./s3_bucket/uploadfileonbucket');
 const postTwitter = require('./twitter/postTwitter');
+const retrieveFileFromBucket = require('./S3_bucket/retrieveFileFromBucket');
 // const deleteFilesFromS3 = require('./s3_bucket/deleteFileFromBucket');
 //
 // const insertIntoDB = require('./database/databaseHandler')
@@ -99,6 +100,18 @@ app.post('/signIn', function (req, res) {
 app.get('/cognito/users', function (req, res) {
     console.log("Call For Cognito Users");
     const response =  getUserDetails();
+    response.then((response)=>{
+        res.send(response);
+    },(error)=>{
+        res.send(error);
+    }).catch(() => {
+        res.send();
+    });
+});
+
+app.get('/retrieve', function (req, res) {
+    console.log("Call To Retrieve Files");
+    const response =  retrieveFileFromBucket(req.username);
     response.then((response)=>{
         res.send(response);
     },(error)=>{

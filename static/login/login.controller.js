@@ -32,8 +32,8 @@
                 window.localStorage.setItem('firstName', data.response.idToken.payload.name);
                 window.localStorage.setItem('lastName', data.response.idToken.payload.family_name);
                 window.localStorage.setItem('email', data.response.idToken.payload.email);
-                    //window.location = "home.html";
-                    window.location= "http://localhost:3000/dashboard.html";
+                    window.location = "dashboard.html";
+                    //window.location= "http://localhost:3000/dashboard.html";
             }));
     }
 })();
