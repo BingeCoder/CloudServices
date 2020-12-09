@@ -66,18 +66,26 @@
   width: 100%;
 }
     </style>
+  <script>
+    $(function(){
+      $("#nav").load("common/nav.html");
+    });
+  </script>
 </head>
 <body>
 <div class="container">
-  
+
     <div class="main-body">
-    
+      <div id="nav"></div>
           <!-- Breadcrumb -->
           <nav aria-label="breadcrumb" class="main-breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="index.html">Home</a></li>
               <li class="breadcrumb-item"><a href="javascript:void(0)">User</a></li>
               <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+              <div class="navbar-nav ml-auto" id="logout-div">
+                <button id="logoutBtn" class="btn btn-outline-Dark ">Logout</button>
+              </div>
             </ol>
           </nav>
           <!-- /Breadcrumb -->

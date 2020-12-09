@@ -22,6 +22,8 @@ const signInUser = require('./registration/signInUser')
 const getUserDetails = require('./registration/cognitoUserDetails')
 const uploadFilesToS3 = require('./s3_bucket/uploadfileonbucket');
 const postTwitter = require('./twitter/postTwitter');
+const deleteCognitoUser = require('./registration/cognitoDeleteUser');
+
 //const retrieveFileFromBucket = require('./S3_bucket/retrieveFileFromBucket');
 // const deleteFilesFromS3 = require('./s3_bucket/deleteFileFromBucket');
 //
@@ -160,6 +162,18 @@ app.post('/logout', function (req, res) {
     console.log("logout");
     req.session.destroy();
     res.send({status: 200});
+});
+
+app.delete('/cognito/user', function (req, res) {
+    console.log("Call to delete Cognito Users");
+    const response =  deleteCognitoUser(req.body.username);
+    response.then((response)=>{
+        res.send(response);
+    },(error)=>{
+        res.send(error);
+    }).catch(() => {
+        res.send();
+    });
 });
 
 // app.delete('/delete', function (req, res) {

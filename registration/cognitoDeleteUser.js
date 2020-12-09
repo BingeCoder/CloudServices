@@ -7,25 +7,23 @@ AWS.config.update({
     // secretAccessKey: config.awsUser.secretAccessKey
 });
 
-function getUserDetails() {
-    console.log("Get Skills Details...")
+function deleteUser(username){
+    const params1 = {
+        UserPoolId: config.cognito.userPoolId,
+        Username: username
+    };
+    console.log("delete user")
     const cognitoIdentityService = new AWS.CognitoIdentityServiceProvider({apiVersion: '2016-04-19', region: config.region});
-    console.log(config.cognito.userPoolId);
-
-    const poolData = {
-        UserPoolId : config.cognito.userPoolId
-    }
 
     return new Promise((resolve,reject) => {
-        cognitoIdentityService.listUsers(poolData, (err, data) => {
+        cognitoIdentityService.adminDeleteUser(params1,(err,data)=>{
             if (!err) {
-                console.log('Skills Details Success...');
+                console.log('delete Success...');
                 console.log(JSON.stringify(data));
                 resolve(data);
-
-
-            } else {
-                console.log('Skills Details Error...');
+            }
+            else {
+                console.log('delete Error...');
                 console.log(JSON.stringify(err));
                 reject(err);
             }
@@ -33,4 +31,4 @@ function getUserDetails() {
     });
 }
 
-module.exports = getUserDetails;
+module.exports = deleteUser;

@@ -3,9 +3,12 @@ document.getElementById("fname").innerHTML = window.localStorage.getItem("firstN
 document.getElementById("lname").innerHTML = window.localStorage.getItem("lastName");
 document.getElementById("phone").innerHTML = window.localStorage.getItem("phone");
 document.getElementById("email").innerHTML = window.localStorage.getItem("email");
+
 var user_name = window.localStorage.getItem('email');;
 const fileInput = $('#imgInput');
 const profileImg = $('#profileImg');
+const logoutBtn = $('#logoutBtn');
+logoutBtn.click(logout);
 
 fileInput.change(addProfilePicInS3)
 console.log("this is from the dashboard controller");
@@ -320,5 +323,18 @@ function addProfilePicInS3(){
           console.log("Upload Failed");
         }
       }));
+}
+function logout() {
+    fetch('/logout', {
+      method: 'post',
+      body: '',
+      headers: {
+        'content-type': 'application/json'
+      }
+    }).then(response =>
+        response.json().then(data => {
+         // window.location = "login.html";
+          window.location = "http://localhost:3000/login.html";
+        }));
 }
 
