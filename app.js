@@ -22,7 +22,7 @@ const signInUser = require('./registration/signInUser')
 const getUserDetails = require('./registration/cognitoUserDetails')
 const uploadFilesToS3 = require('./s3_bucket/uploadfileonbucket');
 const postTwitter = require('./twitter/postTwitter');
-const retrieveFileFromBucket = require('./S3_bucket/retrieveFileFromBucket');
+//const retrieveFileFromBucket = require('./S3_bucket/retrieveFileFromBucket');
 // const deleteFilesFromS3 = require('./s3_bucket/deleteFileFromBucket');
 //
 // const insertIntoDB = require('./database/databaseHandler')
