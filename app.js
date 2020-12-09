@@ -109,17 +109,17 @@ app.get('/cognito/users', function (req, res) {
     });
 });
 
-app.get('/retrieve', function (req, res) {
-    console.log("Call To Retrieve Files");
-    const response =  retrieveFileFromBucket(req.username);
-    response.then((response)=>{
-        res.send(response);
-    },(error)=>{
-        res.send(error);
-    }).catch(() => {
-        res.send();
-    });
-});
+// app.get('/retrieve', function (req, res) {
+//     console.log("Call To Retrieve Files");
+//     const response =  retrieveFileFromBucket(req.username);
+//     response.then((response)=>{
+//         res.send(response);
+//     },(error)=>{
+//         res.send(error);
+//     }).catch(() => {
+//         res.send();
+//     });
+// });
 
 app.post('/upload', function (req, res) {
     // new formidable.IncomingForm().parse(req, (err, fields, files) => {
