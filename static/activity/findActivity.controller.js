@@ -6,9 +6,6 @@ function findActivity() {
     $skillsTable.hide();
     $tweetBtn.click(getCognitoUserDetails());
 
-
-
-
     fetch('https://eddbusbki1.execute-api.us-west-2.amazonaws.com/dev/getskills?type=skills_offered', {
         method: 'GET',
         headers: {

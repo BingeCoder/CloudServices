@@ -139,14 +139,54 @@
                         const val = document.createTextNode(category);
                         cell.appendChild(val);
                         row.appendChild(cell);
+                        const cell2 = document.createElement('td');
+                        var btn = document.createElement('button');
+                        btn.className = "btn btn-danger";
+                        // var linkText = document.createTextNode("View");
+                        // a.appendChild(linkText);
+                        btn.innerHTML = "Delete";
+                        btn.onclick = function(){
+                            deleteCategory(category)
+                            console.log("delete called");
+                            console.log(this);
+                        };
+                        cell2.appendChild(btn);
+                        row.appendChild(cell2);
+
                         tblBody.appendChild(row);
                     }
                     table.append(tblBody);
+                    function deleteCategory(category){
+                        fetch('https://eddbusbki1.execute-api.us-west-2.amazonaws.com/dev/deletecategory' ,{
+                            method : 'post',
+                            body : JSON.stringify({category: category}),
+                            headers: {
+                                'content-type': 'application/json'
+                            }
+                        }).then(response =>
+                            response.json().then(data => ({
+                                    files: data,
+                                    status: response.status
+                                })
+                            ).then(response => {
+                                if(response.status === 200){
+                                    console.log("Cognito User Fetch Success");
+                                    console.log(response);
+                                    //onLoad();
+                                    location.reload();
+                                }
+                                else{
+                                    console.log("Cognito User Fetch Failed");
+                                }
+                            }));
+                    }
                 } else {
                     console.log("Could not fetch the Category");
                 }
             }));
     }
+
+
 
     function addCategory(){
         const category = $inputCatgry.val();
