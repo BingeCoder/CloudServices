@@ -24,14 +24,6 @@ const uploadFilesToS3 = require('./s3_bucket/uploadfileonbucket');
 const postTwitter = require('./twitter/postTwitter');
 const deleteCognitoUser = require('./registration/cognitoDeleteUser');
 
-//const retrieveFileFromBucket = require('./S3_bucket/retrieveFileFromBucket');
-// const deleteFilesFromS3 = require('./s3_bucket/deleteFileFromBucket');
-//
-// const insertIntoDB = require('./database/databaseHandler')
-// const retrieveFilesFromDB = require('./database/retrieveFromDB')
-// const updateFilesInDB = require('./database/updateDB')
-// const deleteFilesInDB = require('./database/deleteEntries')
-
 app.post('/register', function (req, res) {
     console.log("Received register post request" + req.body);
     const fName = req.body.firstName;
@@ -111,17 +103,18 @@ app.get('/cognito/users', function (req, res) {
     });
 });
 
-// app.get('/retrieve', function (req, res) {
-//     console.log("Call To Retrieve Files");
-//     const response =  retrieveFileFromBucket(req.username);
-//     response.then((response)=>{
-//         res.send(response);
-//     },(error)=>{
-//         res.send(error);
-//     }).catch(() => {
-//         res.send();
-//     });
-// });
+app.delete('/cognito/user', function (req, res) {
+    console.log("Call to delete Cognito Users");
+    const response =  deleteCognitoUser(req.body.username);
+    response.then((response)=>{
+        res.send(response);
+    },(error)=>{
+        res.send(error);
+    }).catch(() => {
+        res.send();
+    });
+});
+
 
 app.post('/upload', function (req, res) {
     // new formidable.IncomingForm().parse(req, (err, fields, files) => {
@@ -163,97 +156,6 @@ app.post('/logout', function (req, res) {
     req.session.destroy();
     res.send({status: 200});
 });
-
-app.delete('/cognito/user', function (req, res) {
-    console.log("Call to delete Cognito Users");
-    const response =  deleteCognitoUser(req.body.username);
-    response.then((response)=>{
-        res.send(response);
-    },(error)=>{
-        res.send(error);
-    }).catch(() => {
-        res.send();
-    });
-});
-
-// app.delete('/delete', function (req, res) {
-//     console.log("Delete Request");
-//     const response =  deleteFilesFromS3(req.body.folder,req.body.name);
-//     response.then((response)=>{
-//         res.send(response);
-//     },(error)=>{
-//         res.send(error);
-//     }).catch(() => {
-//         res.send();
-//     });
-// });
-//
-// app.post('/db/insert', function (req, res) {
-//     console.log("Post Insert Request");
-//     //const response = insertIntoDB(req.body.email,req.body.bucket,req.body.key,req.body.location);
-//     const response = insertIntoDB(req.body);
-//     response.then((response)=>{
-//         res.send(response);
-//         console.log(TAG + " Insert Success");
-//         console.log(response);
-//     },(error)=>{
-//         console.log(TAG + " Insert Failed");
-//         console.log(error.statusCode);
-//         console.log(error.response);
-//         res.send(error);
-//     }).catch(() => {
-//         res.send();
-//     });
-// });
-//
-// app.post('/db/retrieve', function (req, res) {
-//     console.log("Post Retrieve Request");
-//     //const response =  retrieveFilesFromS3();
-//     console.log('gunjan gunjan gunjan');
-//     console.log(req.session);
-//     console.log(req.session['currentUser']);
-//     var email;
-//     if(req.body.email){
-//         email = req.body.email;
-//     }
-//     else{
-//         email = req.session['currentUser'];
-//     }
-//     const response = retrieveFilesFromDB(email);
-//     response.then((response)=>{
-//         res.send(response);
-//     },(error)=>{
-//         res.send(error);
-//     }).catch(() => {
-//         res.send();
-//     });
-// });
-//
-// app.post('/db/update', function (req, res) {
-//     console.log("POST Update Request");
-//     const response = updateFilesInDB(req.body.updateTime,req.body.userId);
-//     response.then((response)=>{
-//         res.send(response);
-//     },(error)=>{
-//         res.send(error);
-//     }).catch(() => {
-//         res.send();
-//     });
-// });
-//
-// app.delete('/db/delete', function (req, res) {
-//     console.log("Call To Delete Entry In a Table");
-//     const response =  deleteFilesInDB(req.body.userId);
-//     response.then((response)=>{
-//         res.send(response);
-//     },(error)=>{
-//         res.send(error);
-//     }).catch(() => {
-//         res.send();
-//     });
-// });
-//
-
 
 const server = app.listen(3000);
 
