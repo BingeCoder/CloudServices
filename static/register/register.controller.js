@@ -66,11 +66,12 @@
                 console.log(TAG + "Registration Success");
 
                 userName = response.user.username;
+                console.log(firstName);
                 window.localStorage.setItem('firstName', firstName);
                 window.localStorage.setItem('lastName', lastName);
                 window.localStorage.setItem('email', emailAddress);
                 window.localStorage.setItem('phone', phoneNumber);
-                window.localStorage.setItem('birthdate', "15/10/1980");
+                window.localStorage.setItem('birthdate', "xx/xx/xxxx");
                 window.localStorage.setItem('interestedSkills', JSON.stringify(interestedSkillList));
                 const skills = window.localStorage.getItem('interestedSkills');
                 console.log(skills);
