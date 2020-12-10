@@ -1,10 +1,13 @@
 //Global Variables
-<<<<<<< Updated upstream
-// document.getElementById("fname").innerHTML = window.localStorage.getItem("firstName");
-// document.getElementById("lname").innerHTML = window.localStorage.getItem("lastName");
-// document.getElementById("phone").innerHTML = window.localStorage.getItem("phone");
-// document.getElementById("email").innerHTML = window.localStorage.getItem("email");
 var user_name = window.localStorage.getItem('email');
+
+$(document).ready(function () {
+  console.log("ready!");
+  getUserDetails();
+  getActivityCreated();
+  getActivitySignedUpFor();
+});
+
 const first_name = window.localStorage.getItem("firstName");
 const fileInput = $('#imgInput');
 const profileImg = $('#profileImg');
@@ -12,49 +15,51 @@ const logoutBtn = $('#logoutBtn');
 logoutBtn.click(logout);
 
 fileInput.change(addProfilePicInS3);
-=======
-console.log(window.localStorage.getItem("first_name"));
-console.log(window.localStorage.getItem("lastName"));
-console.log(window.localStorage.getItem("phone"));
-console.log(window.localStorage.getItem("email"));
 
-var user_name = window.localStorage.getItem('email');
+//Get user details!!!////
+function getUserDetails() {
+  fetch("https://eddbusbki1.execute-api.us-west-2.amazonaws.com/dev/getuser?user_name=" + user_name)
+    .then((response) => response.json())
+    .then((data) => {
 
-// const fileInput = $('#imgInput');
-// const profileImg = $('#profileImg');
-// const logoutBtn = $('#logoutBtn');
-// logoutBtn.click(logout);
+      let item = data.Items[0];
+      console.log("This is the user infor:");
+      console.log(item);
+      var first_name = item.first_name;
+      var last_name = item.last_name;
+      var phone = item.phone;
+      var user_name = item.user_name;
+      var pic_url = item.picture;
+      var interests = item.interests;
+      document.getElementById("fname").innerHTML = first_name;
+      document.getElementById("lname").innerHTML = last_name;
+      document.getElementById("phone").innerHTML = phone;
+      document.getElementById("email").innerHTML = user_name;
+      document.getElementById("insta").innerHTML = first_name+last_name;
 
-// fileInput.change(addProfilePicInS3);
->>>>>>> Stashed changes
+      console.log(interests[0]);
 
+      document.getElementById("firstInterest").innerHTML = interests[0];
+      document.getElementById("secondInterest").innerHTML = interests[1];
+      document.getElementById("thirdInterest").innerHTML = interests[2];
+      document.getElementById("fourthInterest").innerHTML = interests[3];
+
+      console.log(first_name, last_name, phone, user_name, pic_url);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+//getUserDetails();
 
 function getActivityCreated() {
-  fetch("https://eddbusbki1.execute-api.us-west-2.amazonaws.com/dev/getskills?type=skills_offered&user_name="+ user_name)
-<<<<<<< Updated upstream
-      .then((response) => response.json())
-      .then((data) => {
-        //console.log(JSON.stringify(data));
-        console.log(user_name);
-        console.log(data);
-
-        for (var i = 0; i < data.Items[0].skills_offered.length; i++) {
-          let item = data.Items[0].skills_offered[i];
-          console.log(item);
-          var category = item.category;
-          var activity_name = item.activity_name;
-          var time = item.time;
-          var desc = item.desc;
-          var capacity = item.capacity;
-
-          var userHTML = `<div class="col-sm-4 mb-3">
-=======
+  fetch("https://eddbusbki1.execute-api.us-west-2.amazonaws.com/dev/getskills?type=skills_offered&user_name=" + user_name)
     .then((response) => response.json())
     .then((data) => {
       //console.log(JSON.stringify(data));
       console.log(user_name);
       console.log(data);
-      
+      $("#activityCardOffered").empty();
       for (var i = 0; i < data.Items[0].skills_offered.length; i++) {
         let item = data.Items[0].skills_offered[i];
         console.log(item);
@@ -63,41 +68,30 @@ function getActivityCreated() {
         var time = item.time;
         var desc = item.desc;
         var capacity = item.capacity;
-        
+
         var userHTML = `<div class="col-sm-4 mb-3">
->>>>>>> Stashed changes
                               <div class="card h-100">
-                                <div class="card-body">
+                                <div class="card-body text-info">
                                 <h5 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Activity Summary: </i></h5>
-                                  <h6 class="capitalize">Category: <span>` + category + `</span> </h6> 
-                                  <h6 class="capitalize">Activity: <span>` + activity_name + `</span> </h6> 
-                                  <h6>Description: <span>` + desc + `</span> </h6>
-                                  <h6>Time: <span>` + time + `</span> </h6> 
-                                  <h6 class="capitalize">Capacity: <span>` + capacity + `</span> </h6> 
-                                  <button class="btn btn-info" onClick= "deleteActivity('` + user_name + `','` + activity_name + `')">
+                                  <h6 class="capitalize">Category: <span class="text-black">` + category + `</span> </h6> 
+                                  <h6 class="capitalize">Activity: <span class="text-black">` + activity_name + `</span> </h6> 
+                                  <h6>Description: <span class="text-black">` + desc + `</span> </h6>
+                                  <h6>Time: <span class="text-black">` + time + `</span> </h6> 
+                                  <h6 class="capitalize">Capacity: <span class="text-black">` + capacity + `</span> </h6> 
+                                  <button class="btn btn-info float-right" onClick= "deleteActivity('` + user_name + `','` + activity_name + `')">
                                   <img src="../../svg/trash.png" width="20px" height="18px">Delete</button>
                                 </div>
                               </div>
                             </div>`;
-<<<<<<< Updated upstream
 
-          $("#activityCardOffered").append(userHTML)
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-=======
-                            
-        $("#activityCardOffered").append(userHTML)
+        $("#activityCardOffered").append(userHTML);
       }
     })
     .catch((err) => {
       console.log(err);
     });
->>>>>>> Stashed changes
 }
-getActivityCreated(); // Call this function with the current user_name as parameter
+//getActivityCreated(); // Call this function with the current user_name as parameter
 
 // //---------------------Function to call the Activities the User signed up for-----------------//
 
@@ -126,8 +120,8 @@ function getActivitySignedUpFor() {
                                   <h6>Description: <span>` + desc + `</span> </h6>
                                   <h6>Time: <span>` + time + `</span> </h6> 
                                   <h6 class="capitalize">Capacity: <span>` + capacity + `</span> </h6> 
-                                  <button class="btn btn-info" onClick= "unEnroll('` + user_name + `','` + activity_name + `')">
-                                  <img src="../../svg/trash.png" width="20px" height="18px">Leave Activity</button>
+                                  <button class="btn btn-info float-right" onClick= "unEnroll('` + user_name + `','` + activity_name + `')">
+                                  <img src="../../svg/trash.png" width="20px" height="18px">Unenroll</button>
                                   
                                 </div>
                               </div>
@@ -140,7 +134,7 @@ function getActivitySignedUpFor() {
         console.log(err);
       });
 }
-getActivitySignedUpFor();
+// getActivitySignedUpFor();
 
 // //Pop-up Form Submission with all the DATA captured
 
@@ -158,14 +152,10 @@ function PostFormOnSubmit(theForm) {
     "time": time,
     "capacity": capacity
   }
-<<<<<<< Updated upstream
 
-=======
-  
->>>>>>> Stashed changes
   addOfferedSkill(user_name, skill);
   //also call the display activities to show the latest list of "signed-up for"
-  getActivitySignedUpFor();
+  //getActivitySignedUpFor();
 }
 
 // //The Find Activity based on Category Page form submission
@@ -216,23 +206,16 @@ async function postData(data, url) {
     console.log("Request complete! POST SUCCESS! response:", JSON.stringify(response));
     return response.json();
   } catch (error) {
-    //console.log("POST Error! Could not add the interested skill! Error:\n" + error);
+    console.log("POST Error! Could not add the interested skill! Error:\n" + error);
     return null;
   }
 }
 
 async function postDataNoCors(data, url) {
-<<<<<<< Updated upstream
 
-  try {
-
-    const response = await fetch(url, {
-=======
-  
   try {
     
-   const response = await fetch(url, {
->>>>>>> Stashed changes
+   	  const response = await fetch(url, {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
       mode: 'no-cors', // no-cors, *cors, same-origin
       cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -248,11 +231,7 @@ async function postDataNoCors(data, url) {
     console.log("Request to delete is complete!", JSON.stringify(response));
     return response;
   } catch (error) {
-<<<<<<< Updated upstream
-    console.log("POST Error! Could not add the interested skill! Error:\n" + error);
-=======
     console.log("POST Error! Could not delete the activity! Error:\n" + error);
->>>>>>> Stashed changes
     return null;
   }
 }
@@ -262,11 +241,11 @@ async function addInterestedSkill(username, category, activity_name, offerer_nam
   let data = {
     "user_name": username,
     "skill": {
-      "category" : category,
-      "activity_name" : activity_name ,
-      "time" : time,
-      "desc" : desc,
-      "capacity" : capacity
+      "category": category,
+      "activity_name": activity_name,
+      "time": time,
+      "desc": desc,
+      "capacity": capacity
     }
   };
   console.log("Data: " + JSON.stringify(data));
@@ -274,7 +253,7 @@ async function addInterestedSkill(username, category, activity_name, offerer_nam
   let url = "https://eddbusbki1.execute-api.us-west-2.amazonaws.com/dev/addinterestedskill";
 
   var postResponse = await postData(data, url);
-
+  swal("Enrolled Successfully!", "", "success");
   return postResponse;
 }
 
@@ -290,43 +269,41 @@ async function addOfferedSkill(username, skill) {
   let url = "https://eddbusbki1.execute-api.us-west-2.amazonaws.com/dev/addofferedskill";
 
   var postResponse = await postData(data, url);
-
+  swal("Created activity successfully!", "", "success");
+  $('#modalContactForm').modal('hide');
+  //location.reload();
+  getActivityCreated();
   return postResponse;
 }
 
 async function deleteActivity(user_name, activity_name) {
-<<<<<<< Updated upstream
-  console.log(user_name);
-  console.log(activity_name);
-=======
+
   //console.log(user_name);
   //console.log(activity_name);
->>>>>>> Stashed changes
   let data = {
     "user_name": user_name,
-    "activity_name" : activity_name
+    "activity_name": activity_name
   };
   console.log("This is the activity and user we are deleting:" + data);
   let url = "https://j2ksp0n499.execute-api.us-west-2.amazonaws.com/prod";
-<<<<<<< Updated upstream
 
-=======
-  
   var theResult = await postDataNoCors(data, url);
+  //swal("Deleted activity successfully!", "", "success");
+  location.reload();
   return theResult;
 }
 
-async function unEnroll(user_name,activity_name){
+async function unEnroll(user_name, activity_name) {
   let data = {
     "user_name": user_name,
-    "activity_name" : activity_name
+    "activity_name": activity_name
   };
   console.log("This is the activity and user we are deleting:");
   console.log(data);
   let url = "https://fm4gn37570.execute-api.us-west-2.amazonaws.com/prod";
   
->>>>>>> Stashed changes
   var theResult = await postDataNoCors(data, url);
+  location.reload();
   return theResult;
 }
 
@@ -340,10 +317,10 @@ function getActivityBasedOnCategory(OfferedList, selectedCategory, userName) {
     if (email !== userName) {
       //console.log(email);
       //console.log(activity.skills_offered);
-      for(let j=0 ; j < activity.skills_offered.length; j ++ ){
+      for (let j = 0; j < activity.skills_offered.length; j++) {
         var skillOffered = activity.skills_offered[j];
 
-        if(skillOffered.category.toLowerCase() == selectedCategory.toLowerCase()){
+        if (skillOffered.category.toLowerCase() == selectedCategory.toLowerCase()) {
           //console.log("This is the current category: " + skillOffered.category);
           //console.log("Selected category: " + selectedCategory);
           var name = activity.name;
