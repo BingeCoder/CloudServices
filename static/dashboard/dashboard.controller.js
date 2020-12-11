@@ -3,7 +3,7 @@ var user_name = window.localStorage.getItem('email');
 
 $(document).ready(function () {
     console.log("ready!");
-    getUserDetails();
+    //getUserDetails();
     getActivityCreated();
     getActivitySignedUpFor();
 });
@@ -19,41 +19,35 @@ logoutBtn.click(logout);
 
 fileInput.change(addProfilePicInS3);
 
-//Get user details!!!////
-function getUserDetails() {
-    fetch("https://eddbusbki1.execute-api.us-west-2.amazonaws.com/dev/getuser?user_name=" + user_name)
-        .then((response) => response.json())
-        .then((data) => {
+// Get the activity name without the offerer user_name
+function getSimpleActivityName(activity_name)
+{
+  if (activity_name === null || activity_name == "") {
+    return "";
+  }
+  var sepIdx = activity_name.indexOf(":");
+  var simpleActivityName = activity_name.substring(0, sepIdx);
 
-            let item = data.Items[0];
-            console.log("This is the user infor:");
-            console.log(item);
-            var first_name = item.first_name;
-            var last_name = item.last_name;
-            var phone = item.phone;
-            var user_name = item.user_name;
-            var pic_url = item.picture;
-            var interests = item.interests;
-            document.getElementById("fname").innerHTML = first_name;
-            document.getElementById("lname").innerHTML = last_name;
-            document.getElementById("phone").innerHTML = phone;
-            document.getElementById("email").innerHTML = user_name;
-            document.getElementById("insta").innerHTML = first_name+last_name;
-
-            console.log(interests[0]);
-
-            document.getElementById("firstInterest").innerHTML = interests[0];
-            document.getElementById("secondInterest").innerHTML = interests[1];
-            document.getElementById("thirdInterest").innerHTML = interests[2];
-            document.getElementById("fourthInterest").innerHTML = interests[3];
-
-            console.log(first_name, last_name, phone, user_name, pic_url);
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+  return simpleActivityName;
 }
-//getUserDetails();
+
+// Get the day from the timestamp
+function getDay(timestamp)
+{
+  var sepIdx = timestamp.indexOf("T");
+  var day = timestamp.substring(0, sepIdx);
+
+  return day;
+}
+
+// Get the time from the timestamp
+function getTime(timestamp)
+{
+  var sepIdx = timestamp.indexOf("T");
+  var time = timestamp.substring(sepIdx + 1, timestamp.length);
+
+  return time;
+}
 
 function getActivityCreated() {
     fetch("https://eddbusbki1.execute-api.us-west-2.amazonaws.com/dev/getskills?type=skills_offered&user_name=" + user_name)
@@ -76,13 +70,13 @@ function getActivityCreated() {
                               <div class="card h-100">
                                 <div class="card-body text-info">
                                 <h5 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Activity Summary: </i></h5>
+                                  <h6 class="capitalize">Activity: <span class="text-black">` + activity_name + `</span> </h6> 
                                   <h6 class="capitalize">Category: <span class="text-black">` + category + `</span> </h6>
-                                  <h6 class="capitalize">Activity: <span class="text-black">` + activity_name + `</span> </h6>
                                   <h6>Description: <span class="text-black">` + desc + `</span> </h6>
-                                  <h6>Time: <span class="text-black">` + time + `</span> </h6>
-                                  <h6 class="capitalize">Capacity: <span class="text-black">` + capacity + `</span> </h6>
+                                  <h6>Date & Time: <span class="text-black">` + getDay(time) + `, ` + getTime(time) + `</span> </h6> 
+                                  <h6 class="capitalize">Capacity: <span class="text-black">` + capacity + `</span> </h6> 
                                   <button class="btn btn-info float-right" onClick= "deleteActivity('` + user_name + `','` + activity_name + `')">
-                                  <img src="../../svg/trash.png" width="20px" height="18px">Delete</button>
+                                  <img style="margin-right: 5px;" src="./svg/trash.png" width="20px" height="18px">Delete</button>
                                 </div>
                               </div>
                             </div>`;
@@ -116,16 +110,16 @@ function getActivitySignedUpFor() {
 
                 var userHTML = `<div class="col-sm-4 mb-3">
                               <div class="card h-100">
-                                <div class="card-body">
+                                <div class="card-body text-info">
                                 <h5 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Activity Summary: </i></h5>
-                                  <h6 class="capitalize">Category: <span>` + category + `</span> </h6>
-                                  <h6 class="capitalize">Activity: <span>` + activity_name + `</span> </h6>
-                                  <h6>Description: <span>` + desc + `</span> </h6>
-                                  <h6>Time: <span>` + time + `</span> </h6>
-                                  <h6 class="capitalize">Capacity: <span>` + capacity + `</span> </h6>
+                                  <h6 class="capitalize">Activity: <span class="text-black">` + getSimpleActivityName(activity_name) + `</span> </h6>
+                                  <h6 class="capitalize">Category: <span class="text-black">` + category + `</span> </h6>  
+                                  <h6>Description: <span class="text-black">` + desc + `</span> </h6>
+                                  <h6>Date & Time: <span class="text-black">` + getDay(time) + `, ` + getTime(time) + `</span> </h6> 
+                                  <h6 class="capitalize">Capacity: <span class="text-black">` + capacity + `</span> </h6> 
                                   <button class="btn btn-info float-right" onClick= "unEnroll('` + user_name + `','` + activity_name + `')">
-                                  <img src="../../svg/trash.png" width="20px" height="18px">Unenroll</button>
-
+                                  <img style="margin-right: 5px;" src="./svg/leave.png" width="20px" height="18px">Unenroll</button>
+                                  
                                 </div>
                               </div>
                             </div>`;
@@ -141,7 +135,7 @@ function getActivitySignedUpFor() {
 
 // //Pop-up Form Submission with all the DATA captured
 
-function PostFormOnSubmit(theForm) {
+async function PostFormOnSubmit(theForm) {
     var category = theForm.validationDefault01.value;
     var activity_name = theForm.validationDefault02.value;
     var desc = theForm.validationDesc.value;
@@ -156,9 +150,8 @@ function PostFormOnSubmit(theForm) {
         "capacity": capacity
     }
 
-    addOfferedSkill(user_name, skill);
-    //also call the display activities to show the latest list of "signed-up for"
-    //getActivitySignedUpFor();
+    await addOfferedSkill(user_name, skill);
+   
 }
 
 // //The Find Activity based on Category Page form submission
@@ -245,7 +238,7 @@ async function addInterestedSkill(username, category, activity_name, offerer_nam
         "user_name": username,
         "skill": {
             "category": category,
-            "activity_name": activity_name,
+            "activity_name": activity_name + ':' + offerer_name,
             "time": time,
             "desc": desc,
             "capacity": capacity
@@ -282,32 +275,71 @@ async function addOfferedSkill(username, skill) {
 async function deleteActivity(user_name, activity_name) {
 
     //console.log(user_name);
-    //console.log(activity_name);
+  //console.log(activity_name);
+  
+  var willDelete = await swal({
+    title: "Are you sure?",
+    text: "",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  });
+
+  var theResult = false;
+  
+  if (willDelete === true) {
+    console.log("Willdelete: " + willDelete);
+
     let data = {
-        "user_name": user_name,
-        "activity_name": activity_name
+      "user_name": user_name,
+      "activity_name": activity_name
     };
     console.log("This is the activity and user we are deleting:" + data);
     let url = "https://j2ksp0n499.execute-api.us-west-2.amazonaws.com/prod";
 
-    var theResult = await postDataNoCors(data, url);
-    //swal("Deleted activity successfully!", "", "success");
+    theResult = await postDataNoCors(data, url);
     location.reload();
-    return theResult;
+  }
+  //swal("Deleted activity successfully!", "", "success");
+  //location.reload();
+
+  return theResult;
 }
 
 async function unEnroll(user_name, activity_name) {
+    var willDelete = await swal({
+    title: "Are you sure?",
+    text: "",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  });
+  var theResult = false;
+
+  if (willDelete === true) {
+    swal("Unenrolled Successfully!", {
+      icon: "success",
+    });
     let data = {
-        "user_name": user_name,
-        "activity_name": activity_name
+      "user_name": user_name,
+      "activity_name": activity_name
     };
     console.log("This is the activity and user we are deleting:");
     console.log(data);
     let url = "https://fm4gn37570.execute-api.us-west-2.amazonaws.com/prod";
-
+    
     var theResult = await postDataNoCors(data, url);
+    
     location.reload();
+
     return theResult;
+
+  } 
+  //else {
+  //   await swal("Okay! Phew!");
+  // }
+
+  return null;
 }
 
 function getActivityBasedOnCategory(OfferedList, selectedCategory, userName) {
@@ -336,17 +368,18 @@ function getActivityBasedOnCategory(OfferedList, selectedCategory, userName) {
 
                     var userHTML = `<div class="card-style">
                               <div class="card h-100">
-                                <div class="card-body">
+                                <div class="card-body text-info">
                                 <h5 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Activity Summary: </i></h5>
-                                  <h6 class="capitalize">Category: <span>` + category + `</span> </h6>
-                                  <h6 class="capitalize">Activity: <span>` + activity_name + `</span> </h6>
-                                  <h6>Description: <span>` + desc + `</span> </h6>
-                                  <h6>Time: <span>` + time + `</span> </h6>
-                                  <h6 class="capitalize">Capacity: <span>` + capacity + `</span> </h6>
-                                  <h6 class="capitalize">Offered By: <span>` + name + `</span> </h6>
-                                  <button type="button"
-                                  onclick = "addInterestedSkill('${userName}', '${category}','${activity_name}' , '${activity.user_name}','${time}','${desc}','${capacity}')"
-                                  class="btn btn-info">Enroll</button>
+                                  <h6 class="capitalize">Activity: <span class="text-black">` + activity_name + `</span> </h6> 
+                                  <h6 class="capitalize">Category: <span class="text-black">` + category + `</span> </h6> 
+                                  <h6>Description: <span class="text-black">` + desc + `</span> </h6>
+                                  <h6>Date & Time: <span class="text-black">` + getDay(time) + `, ` + getTime(time) + `</span> </h6>
+                                  <h6 class="capitalize">Capacity: <span class="text-black">` + capacity + `</span> </h6> 
+                                  <h6 class="capitalize">Offered By: <span class="text-black">` + name + `</span> </h6> 
+                                  <button type="button" 
+                                  onclick = "addInterestedSkill('${userName}', '${category}','${activity_name}' , '${activity.user_name}','${time}','${desc}','${capacity}')" 
+                                  class="btn btn-info float-right">
+                                  <img style="margin-right: 5px;" src="./svg/heart.png" width="20px" height="18px">Enroll</button>
                                 </div>
                               </div>
                             </div>`;
