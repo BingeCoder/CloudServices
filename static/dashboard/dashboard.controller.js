@@ -462,8 +462,8 @@ function logout() {
         }
     }).then(response =>
         response.json().then(data => {
-            // window.location = "login.html";
-            window.location = "http://localhost:3000/login.html";
+            window.location = "login.html";
+            //window.location = "http://localhost:3000/login.html";
         }));
 }
 
