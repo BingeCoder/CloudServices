@@ -21,7 +21,8 @@
   };
 
   function facebookProfileInformation(response){
-      //TODO: Use this data for registration.
+    window.localStorage.setItem("facebook", JSON.stringify(response));      
     console.log(JSON.stringify(response));
+    window.location.href = "../register.html";
   };
  })();

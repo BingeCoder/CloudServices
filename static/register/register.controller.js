@@ -1,3 +1,5 @@
+// const { json } = require("body-parser");
+
 (function(){
     const emailAddressFld = $('#emailAddressFld');
     const passwordFld = $('#passwordFld');
@@ -21,6 +23,14 @@
     submitCodeBtn.click(verifyCode);
     signUpBtn.click(register);
     const TAG = 'HandleRegister';
+
+    if(window.localStorage.getItem("facebook")){
+        console.log("---fb--- "+window.localStorage.getItem("facebook"));
+        const signUpObj = JSON.parse(window.localStorage.getItem("facebook"));
+        document.getElementById("firstNameFld").value = signUpObj.first_name;
+        document.getElementById("lastNameFld").value = signUpObj.last_name;
+        document.getElementById("emailAddressFld").value = signUpObj.email;
+    }
 
     function register(){
         console.log(TAG + "Executing Register...")
