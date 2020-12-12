@@ -5,6 +5,20 @@
 
     $categoryBtn.click(addCategory);
 
+    function logout() {
+        fetch('/logout', {
+            method: 'post',
+            body: '',
+            headers: {
+                'content-type': 'application/json'
+            }
+        }).then(response =>
+            response.json().then(data => {
+                window.location = "login.html";
+                //window.location = "http://localhost:3000/login.html";
+            }));
+    }
+
     function onLoad(){
         const TAG = "Fetch User Details..."
         console.log("Started...")
@@ -185,8 +199,6 @@
                 }
             }));
     }
-
-
 
     function addCategory(){
         const category = $inputCatgry.val();

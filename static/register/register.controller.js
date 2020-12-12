@@ -76,11 +76,12 @@
                 console.log(TAG + "Registration Success");
 
                 userName = response.user.username;
+                console.log(firstName);
                 window.localStorage.setItem('firstName', firstName);
                 window.localStorage.setItem('lastName', lastName);
                 window.localStorage.setItem('email', emailAddress);
                 window.localStorage.setItem('phone', phoneNumber);
-                window.localStorage.setItem('birthdate', "15/10/1980");
+                window.localStorage.setItem('birthdate', "xx/xx/xxxx");
                 window.localStorage.setItem('interestedSkills', JSON.stringify(interestedSkillList));
                 const skills = window.localStorage.getItem('interestedSkills');
                 console.log(skills);
@@ -143,8 +144,8 @@
             if (response.status === 200) {
                 console.log("DB Insert Success");
                 console.log(response);
-                //window.location = "dashboard.html";
-                window.location = "http://localhost:3000/dashboard.html"
+                window.location = "dashboard.html";
+                //window.location = "http://localhost:3000/dashboard.html"
             } else {
                 console.log(TAG + "DB Insert Failed");
             }
@@ -176,8 +177,8 @@
     }
 
     function signIn(){
-        //window.location = "signIn.html";
-        window.location = "http://localhost:3000/signIn.html";
+        window.location = "signIn.html";
+        //window.location = "http://localhost:3000/signIn.html";
     }
 
     function validateEmail(mail)
