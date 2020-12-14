@@ -81,7 +81,7 @@ User dashboard is craeted for all the users who successfully logs into he websit
 6. Delete the activities create by the user
 
 ## Code implementation
-   Admin Portal is implemented using javascript, html and css as a frontend and node.js as the backend. Dynamo DB is used to store and retrieve the user data and create and manage categories and activities created within the categories. The portal is deployed on Amazon EC2 instance.
+   Admin Portal and user dashboard have been implemented using javascript, html, bootstrap  and css as a frontend and node.js as the backend. Dynamo DB is used to store and retrieve the user data and create and manage categories and activities created within the categories. The portal is deployed on Amazon EC2 instance. All the user profile images have ben saved in S3 and services are accessed using API Gateways and lambda functions.
    
 ## Analytics
 
