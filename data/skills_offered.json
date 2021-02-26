@@ -1,0 +1,211 @@
+[
+  {
+    "user_name (S)": "anupama.kurudi@gmail.com",
+    "name (S)": "Anupama Kurudi",
+    "skills_offered (L)": [
+      {
+        "M": {
+          "activity_name": {
+            "S": "Movie night"
+          },
+          "capacity": {
+            "S": "20"
+          },
+          "category": {
+            "S": "Entertainment"
+          },
+          "desc": {
+            "S": "Movie night at the Amphi theatre on Friday."
+          },
+          "time": {
+            "S": "2020-12-25T20:30"
+          }
+        }
+      },
+      {
+        "M": {
+          "activity_name": {
+            "S": "Christmas Party"
+          },
+          "capacity": {
+            "S": "25"
+          },
+          "category": {
+            "S": "Entertainment"
+          },
+          "desc": {
+            "S": "Get together for Christmas Eve Party at the Conference Hall."
+          },
+          "time": {
+            "S": "2020-12-24T17:00"
+          }
+        }
+      },
+      {
+        "M": {
+          "activity_name": {
+            "S": "Hindi"
+          },
+          "capacity": {
+            "S": "5"
+          },
+          "category": {
+            "S": "Language"
+          },
+          "desc": {
+            "S": "Learn Hindi with me."
+          },
+          "time": {
+            "S": "2021-01-18T10:00"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "user_name (S)": "gunjan.186@gmail.com",
+    "name (S)": "Emma Watson",
+    "skills_offered (L)": [
+      {
+        "M": {
+          "activity_name": {
+            "S": "German"
+          },
+          "capacity": {
+            "S": "3"
+          },
+          "category": {
+            "S": "Language"
+          },
+          "desc": {
+            "S": "Speak German like a pro!"
+          },
+          "time": {
+            "S": "2020-12-17T17:30"
+          }
+        }
+      },
+      {
+        "M": {
+          "activity_name": {
+            "S": "Lawn Tennis"
+          },
+          "capacity": {
+            "S": "3"
+          },
+          "category": {
+            "S": "Sports"
+          },
+          "desc": {
+            "S": "Lets play tennis this Sunday"
+          },
+          "time": {
+            "S": "2020-12-13T17:55"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "user_name (S)": "gunjan.srivastava@sjsu.edu",
+    "name (S)": "Admin Admin",
+    "skills_offered (L)": []
+  },
+  {
+    "user_name (S)": "kurudi.anupama@gmail.com",
+    "name (S)": "Jane Doe",
+    "skills_offered (L)": [
+      {
+        "M": {
+          "activity_name": {
+            "S": "Basketball"
+          },
+          "capacity": {
+            "S": "5"
+          },
+          "category": {
+            "S": "Sports"
+          },
+          "desc": {
+            "S": "Play basketball this weekend at Encinal Park."
+          },
+          "time": {
+            "S": "2020-12-13T18:30"
+          }
+        }
+      },
+      {
+        "M": {
+          "activity_name": {
+            "S": "French"
+          },
+          "capacity": {
+            "S": "10"
+          },
+          "category": {
+            "S": "Language"
+          },
+          "desc": {
+            "S": "Learn French with me."
+          },
+          "time": {
+            "S": "2020-12-30T18:45"
+          }
+        }
+      },
+      {
+        "M": {
+          "activity_name": {
+            "S": "Biking"
+          },
+          "capacity": {
+            "S": "5"
+          },
+          "category": {
+            "S": "Fitness"
+          },
+          "desc": {
+            "S": "Mountian Biking group in January."
+          },
+          "time": {
+            "S": "2021-01-23T10:10"
+          }
+        }
+      },
+      {
+        "M": {
+          "activity_name": {
+            "S": "Baseball"
+          },
+          "capacity": {
+            "S": "20"
+          },
+          "category": {
+            "S": "Sports"
+          },
+          "desc": {
+            "S": "Group play Baseball!"
+          },
+          "time": {
+            "S": "2020-12-25T17:25"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "user_name (S)": "masterproj12@gmail.com",
+    "name (S)": "Chris Cooper",
+    "skills_offered (L)": []
+  },
+  {
+    "user_name (S)": "shivam.tomar@sjsu.edu",
+    "name (S)": "Binge Coders",
+    "skills_offered (L)": []
+  },
+  {
+    "user_name (S)": "srigunjan1504@gmail.com",
+    "name (S)": "Gunjan Srivastava",
+    "skills_offered (L)": []
+  }
+]

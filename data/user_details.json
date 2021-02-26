@@ -1,0 +1,135 @@
+[
+  {
+    "user_name (S)": "anupama.kurudi@gmail.com",
+    "birth_Date (S)": "",
+    "first_name (S)": "Anupama",
+    "interests (L)": [
+      {
+        "S": "C-Programming"
+      },
+      {
+        "S": "Tennis"
+      },
+      {
+        "S": "Java"
+      }
+    ],
+    "last_name (S)": "Kurudi",
+    "phone (S)": 4085987368,
+    "picture (S)": "/Users/gunjansrivastava/Desktop/EnterpriseProj/EnterpriseProject/drawables.upload.png"
+  },
+  {
+    "user_name (S)": "gunjan.186@gmail.com",
+    "birth_Date (S)": "",
+    "first_name (S)": "Emma",
+    "interests (L)": [
+      {
+        "S": "Yoga"
+      },
+      {
+        "S": "Basket Ball"
+      },
+      {
+        "S": "Tennis"
+      }
+    ],
+    "last_name (S)": "Watson",
+    "phone (S)": 7687562456,
+    "picture (S)": "/Users/gunjansrivastava/Desktop/EnterpriseProj/EnterpriseProject/drawables.upload.png"
+  },
+  {
+    "user_name (S)": "gunjan.srivastava@sjsu.edu",
+    "birth_Date (S)": "",
+    "first_name (S)": "Admin",
+    "interests (L)": [
+      {
+        "S": "Yoga"
+      },
+      {
+        "S": "Tennis"
+      },
+      {
+        "S": "Swimming"
+      },
+      {
+        "S": "Java"
+      }
+    ],
+    "last_name (S)": "Controller",
+    "phone (S)": 6692649456,
+    "picture (S)": "/Users/gunjansrivastava/Desktop/EnterpriseProj/EnterpriseProject/drawables.upload.png"
+  },
+  {
+    "user_name (S)": "kurudi.anupama@gmail.com",
+    "birth_Date (S)": "",
+    "first_name (S)": "Jane",
+    "interests (L)": [
+      {
+        "S": "Swimming"
+      },
+      {
+        "S": "Java"
+      },
+      {
+        "S": "Driving"
+      }
+    ],
+    "last_name (S)": "Doe",
+    "phone (S)": 4087654675,
+    "picture (S)": "/Users/gunjansrivastava/Desktop/EnterpriseProj/EnterpriseProject/drawables.upload.png"
+  },
+  {
+    "user_name (S)": "masterproj12@gmail.com",
+    "birth_Date (S)": "",
+    "first_name (S)": "Chris",
+    "interests (L)": [
+      {
+        "S": "Yoga"
+      },
+      {
+        "S": "Tennis"
+      },
+      {
+        "S": "Swimming"
+      }
+    ],
+    "last_name (S)": "Cooper",
+    "phone (S)": 7687976549,
+    "picture (S)": "/Users/gunjansrivastava/Desktop/EnterpriseProj/EnterpriseProject/drawables.upload.png"
+  },
+  {
+    "user_name (S)": "shivam.tomar@sjsu.edu",
+    "birth_Date (S)": "",
+    "first_name (S)": "Binge",
+    "interests (L)": [
+      {
+        "S": "C-Programming"
+      },
+      {
+        "S": "Basket Ball"
+      }
+    ],
+    "last_name (S)": "Coders",
+    "phone (S)": "",
+    "picture (S)": "/Users/gunjansrivastava/Desktop/EnterpriseProj/EnterpriseProject/drawables.upload.png"
+  },
+  {
+    "user_name (S)": "srigunjan1504@gmail.com",
+    "birth_Date (S)": "",
+    "first_name (S)": "Gunjan",
+    "interests (L)": [
+      {
+        "S": "Basket Ball"
+      },
+      {
+        "S": "Tennis"
+      },
+      {
+        "S": "Swimming"
+      }
+    ],
+    "last_name (S)": "Srivastava",
+    "phone (S)": 6578654890,
+    "picture (S)": "/Users/gunjansrivastava/Desktop/EnterpriseProj/EnterpriseProject/drawables.upload.png"
+  }
+]

@@ -1,162 +1,76 @@
-const express = require('express')
-const bodyParser = require('body-parser');
-const formidable = require('formidable');
+require('dotenv').config();
+var express = require('express');
+var path = require('path');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+const AWS = require('aws-sdk');
+const config = require('./data/config/config.js');
 
-const app = express()
-const TAG = 'App.database';
-var session = require('express-session')
+var app = express();
 
-app.use(express.static('static', {index: 'login.html'}));
+app.use(function (req, res, next) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+  next();
+});
+
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'hbs');
+
+app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(session({
-    resave: false,
-    saveUninitialized: true,
-    secret: 'any string'
-}));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
 
+require('./models/dynamo/article');
 
-const registerUsingCognito = require('./registration/registerUser');
-const verifyUser = require('./registration/verifyUser')
-const signInUser = require('./registration/signInUser')
-const getUserDetails = require('./registration/cognitoUserDetails')
-const uploadFilesToS3 = require('./s3_bucket/uploadfileonbucket');
-const postTwitter = require('./twitter/postTwitter');
-const deleteCognitoUser = require('./registration/cognitoDeleteUser');
+AWS.config.update(config.aws_local_config);
 
-app.post('/register', function (req, res) {
-    console.log("Received register post request" + req.body);
-    const fName = req.body.firstName;
-    const lName = req.body.lastName;
-    const pNumber = req.body.phoneNumber;
-    const gender = req.body.gender;
-    const birthdate = req.body.birthDate;
-    const email = req.body.emailAddress;
-    const pwd = req.body.password;
-    console.log("Data received inside app.database "+ fName +" " + lName +" "+ email + " " + pwd);
-    const response = registerUsingCognito(fName,lName,gender,pNumber,birthdate,email,pwd);
-    response.then((response)=>{
-        req.session['currentUser'] = email;
-        req.session.cookie.maxAge = 1800000;
-        res.send(response);
-        console.log("received response in app.database");
-    },(error)=>{
-        console.log(error.message);
-        res.send({status: 404 , error: error});
-    }).catch(() => {
-        res.send({status: 404});
+var promise = new AWS.DynamoDB.DocumentClient();
+promise.then(
+  () => {
+    console.dir('CONNECTED TO DynamoDB Database');
+    var Article = config.model("Article");
+    // Check if the Article are empty, insert mock data
+    Article.count({}, function(err, c) {
+      if(c == 0) {
+        console.dir('No Article found in the database. Loading data.');
+      } else {
+        console.dir( c + ' Article found in the database. Skipping loading data.');
+      }
     });
+    
+  }
+).catch(
+  err => {
+    console.error('ERROR: UNABLE TO CONNECT TO DATABASE');
+    console.error('Make sure you have set the environment variable MONGODB_URI to the correct endpoint.');
+    console.error(err.message);
+  }
+);
+
+var articles = require('./routes/articles');
+var index = require('./routes/index');
+
+app.use('/', index);
+app.use('/api', articles);
+
+app.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
 });
 
-app.post('/verify', function (req, res) {
-    console.log(TAG + " Received verify post request");
-    console.log(req.body);
-    const code = req.body.verificationCode;
-    const email = req.body.email;
-    const response = verifyUser(email,code);
-    response.then((response)=>{
-        res.send({status: 200});
-        console.log(TAG + " Verification Success");
-        console.log(response.toString());
-    },(error)=>{
-        console.log(TAG + " Verification Failed");
-        console.log(error.code);
-        console.log(error.message);
-        res.send({status: 404});
-    }).catch(() => {
-        res.send({status: 404});
-    });
+app.use(function(err, req, res, next) {
+  res.locals.message = err.message;
+  res.locals.error = err;
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
 });
 
-app.post('/signIn', function (req, res) {
-    console.log(TAG + " Received signIn post request");
-    console.log(req.body);
-    const email = req.body.email;
-    const pwd = req.body.password;
-    const response = signInUser(email,pwd);
-    response.then((response)=>{
-        req.session['currentUser'] = email;
-        req.session.cookie.maxAge = 1800000;
-        res.send(response);
-        console.log(TAG + " SignIn Success");
-        console.log(response);
-        console.log('gunjan: '+email);
-    },(error)=>{
-        console.log(TAG + " SignIn Failed");
-        console.log(error.statusCode);
-        console.log(error.response);
-        res.send({status: 404});
-    }).catch(() => {
-        res.send({status: 404});
-    });
-});
-
-app.get('/cognito/users', function (req, res) {
-    console.log("Call For Cognito Users");
-    const response =  getUserDetails();
-    response.then((response)=>{
-        res.send(response);
-    },(error)=>{
-        res.send(error);
-    }).catch(() => {
-        res.send();
-    });
-});
-
-app.delete('/cognito/user', function (req, res) {
-    console.log("Call to delete Cognito Users");
-    const response =  deleteCognitoUser(req.body.username);
-    response.then((response)=>{
-        res.send(response);
-    },(error)=>{
-        res.send(error);
-    }).catch(() => {
-        res.send();
-    });
-});
-
-
-app.post('/upload', function (req, res) {
-    // new formidable.IncomingForm().parse(req, (err, fields, files) => {
-    console.log("Post Upload Request");
-    const form = new formidable.IncomingForm();
-    form.parse(req, function(err, fields, files) {
-        console.log("Post Upload Request");
-        // console.log(files);
-        console.log(fields.username);
-        // console.log(fields);
-        // console.log(req.session.currentUser);
-        const response = uploadFilesToS3(files.file,fields.username);
-        response.then((response) => {
-            res.send(response);
-            console.log(TAG + " Upload Success");
-            console.log(response);
-        }, (error) => {
-            console.log(TAG + " Upload Failed");
-            console.log(error.statusCode);
-            console.log(error.response);
-            res.send(error);
-        }).catch(() => {
-            res.send();
-        });
-    });
-});
-
-app.post('/post', function (req, res) {
-    const promise = postTwitter(req.body);
-    promise.then((response)=>{
-        res.status(200).send(response);
-    },(error)=>{
-        res.send(error.body);
-    });
-});
-
-app.post('/logout', function (req, res) {
-    console.log("logout");
-    req.session.destroy();
-    res.send({status: 200});
-});
-
-const server = app.listen(3000);
-
-module.exports = server;
+module.exports = app;

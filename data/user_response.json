@@ -1,0 +1,112 @@
+[
+  {
+    "name (S)": "Anupama",
+    "interested (S)": true,
+    "segment (S)": "UsersAbove18"
+  },
+  {
+    "name (S)": "David Schwimmer",
+    "interested (S)": true,
+    "segment (S)": "MaleUsers"
+  },
+  {
+    "name (S)": "Emma",
+    "interested (S)": true,
+    "segment (S)": "UsersWhoAreFemale"
+  },
+  {
+    "name (S)": "Gunjan",
+    "interested (S)": true,
+    "segment (S)": "UsersWhoAreFemale"
+  },
+  {
+    "name (S)": "Gunjan2",
+    "interested (S)": true,
+    "segment (S)": "Female"
+  },
+  {
+    "name (S)": "GunjanSjsu",
+    "interested (S)": true,
+    "segment (S)": "UsersWhoAreFemale"
+  },
+  {
+    "name (S)": "Gunjansjsu",
+    "interested (S)": false,
+    "segment (S)": "UsersAbove18"
+  },
+  {
+    "name (S)": "Gunjansri",
+    "interested (S)": false,
+    "segment (S)": 2
+  },
+  {
+    "name (S)": "John",
+    "interested (S)": true,
+    "segment (S)": "MaleUsers"
+  },
+  {
+    "name (S)": "Mary",
+    "interested (S)": true,
+    "segment (S)": "DecemberBirthdays"
+  },
+  {
+    "name (S)": "Ryan",
+    "interested (S)": true,
+    "segment (S)": "UsersWhoAreFemale"
+  },
+  {
+    "name (S)": "SIGNED_OUT",
+    "interested (S)": true,
+    "segment (S)": "MaleUsers"
+  },
+  {
+    "name (S)": "Sophia",
+    "interested (S)": false,
+    "segment (S)": "UsersWhoAreFemale"
+  },
+  {
+    "name (S)": "gunjan",
+    "interested (S)": true,
+    "segment (S)": ""
+  },
+  {
+    "name (S)": "master",
+    "interested (S)": true,
+    "segment (S)": 2
+  },
+  {
+    "name (S)": "test1",
+    "interested (S)": true,
+    "segment (S)": "test"
+  },
+  {
+    "name (S)": "test2",
+    "interested (S)": true,
+    "segment (S)": "test"
+  },
+  {
+    "name (S)": "test3",
+    "interested (S)": true,
+    "segment (S)": "test"
+  },
+  {
+    "name (S)": "test4",
+    "interested (S)": true,
+    "segment (S)": "test"
+  },
+  {
+    "name (S)": "testname1",
+    "interested (S)": true,
+    "segment (S)": "testsegment1"
+  },
+  {
+    "name (S)": "testname2",
+    "interested (S)": true,
+    "segment (S)": "testsegment2"
+  },
+  {
+    "name (S)": "testname3",
+    "interested (S)": true,
+    "segment (S)": "testsegment3"
+  }
+]

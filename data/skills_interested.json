@@ -1,0 +1,135 @@
+[
+    {
+      "user_name (S)": "anupama.kurudi@gmail.com",
+      "name (S)": "Anupama Kurudi",
+      "skills_interested (L)": [
+        {
+          "M": {
+            "activity_name": {
+              "S": "German:gunjan.186@gmail.com"
+            },
+            "capacity": {
+              "S": "3"
+            },
+            "category": {
+              "S": "Language"
+            },
+            "desc": {
+              "S": "Speak German like a pro!"
+            },
+            "time": {
+              "S": "2020-12-17T17:30"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "user_name (S)": "gunjan.186@gmail.com",
+      "name (S)": "Emma Watson",
+      "skills_interested (L)": [
+        {
+          "M": {
+            "activity_name": {
+              "S": "Basketball:kurudi.anupama@gmail.com"
+            },
+            "capacity": {
+              "S": "5"
+            },
+            "category": {
+              "S": "Sports"
+            },
+            "desc": {
+              "S": "Play basketball this weekend at Encinal Park."
+            },
+            "time": {
+              "S": "2020-12-13T18:30"
+            }
+          }
+        },
+        {
+          "M": {
+            "activity_name": {
+              "S": "Basketball:kurudi.anupama@gmail.com"
+            },
+            "capacity": {
+              "S": "5"
+            },
+            "category": {
+              "S": "Sports"
+            },
+            "desc": {
+              "S": "Play basketball this weekend at Encinal Park."
+            },
+            "time": {
+              "S": "2020-12-13T18:30"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "user_name (S)": "gunjan.srivastava@sjsu.edu",
+      "name (S)": "Admin Admin",
+      "skills_interested (L)": []
+    },
+    {
+      "user_name (S)": "kurudi.anupama@gmail.com",
+      "name (S)": "Jane Doe",
+      "skills_interested (L)": [
+        {
+          "M": {
+            "activity_name": {
+              "S": "Christmas Party:anupama.kurudi@gmail.com"
+            },
+            "capacity": {
+              "S": "25"
+            },
+            "category": {
+              "S": "Entertainment"
+            },
+            "desc": {
+              "S": "Get together for Christmas Eve Party at the Conference Hall."
+            },
+            "time": {
+              "S": "2020-12-24T17:00"
+            }
+          }
+        },
+        {
+          "M": {
+            "activity_name": {
+              "S": "Movie night:anupama.kurudi@gmail.com"
+            },
+            "capacity": {
+              "S": "20"
+            },
+            "category": {
+              "S": "Entertainment"
+            },
+            "desc": {
+              "S": "Movie night at the Amphi theatre on Friday."
+            },
+            "time": {
+              "S": "2020-12-25T20:30"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "user_name (S)": "masterproj12@gmail.com",
+      "name (S)": "Chris Cooper",
+      "skills_interested (L)": []
+    },
+    {
+      "user_name (S)": "shivam.tomar@sjsu.edu",
+      "name (S)": "Binge Coders",
+      "skills_interested (L)": []
+    },
+    {
+      "user_name (S)": "srigunjan1504@gmail.com",
+      "name (S)": "Gunjan Srivastava",
+      "skills_interested (L)": []
+    }
+  ]
