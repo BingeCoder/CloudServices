@@ -1,20 +1,19 @@
 var express = require('express');
-const AWS = require('aws-sdk');
-const config = require('./data/config/config.js');
+var AWS = require('aws-sdk');
+var awsconfig = require('../data/config/config.js');
+AWS.config.update(awsconfig.conf);
 var router = express.Router();
 var jsonResponse = require('../models/jsonResponse');
 
-/* Default GET for skill share api */
+/* Default GET for skill share api home */
 router.get('/', function(req, res, next) {
-  var response = new jsonResponse("Default ratings api endpoint", 200, []);
+  var response = new jsonResponse("Default skill share api endpoint", 200, []);
   res.json(response).status(response.status);
 });
 
 /* api health check endpoint */
 router.get('/healthz', function(req, res, next) {
-  AWS.config.update(config.aws_local_config);
-  const docClient = new AWS.DynamoDB.DocumentClient();
-  if(docClient == 1) {
+  if(awsconfig.docClient != null) {
     res.status(200).send("API health check - OK");
   }
   else {

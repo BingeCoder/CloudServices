@@ -1,9 +1,19 @@
-module.exports = {
-  aws_table_name: 'article',
-  aws_local_config: {
-    region: 'local',
-    endpoint: 'http://localhost:8000'
+var AWS = require("aws-sdk");
+
+AWS.config.update({
+  region: "local",
+  endpoint: "http://localhost:8000" // http://localhost:8000 or https://dynamodb.eu-west-1.amazonaws.com
+});
+
+
+var awsconfig = {
+  conf: {
+    region: "local",
+    endpoint: "http://localhost:8000" // http://localhost:8000 or https://dynamodb.eu-west-1.amazonaws.com
   },
-  aws_remote_config: {
-  }
+  docClient: new AWS.DynamoDB.DocumentClient(),
+  table: "article"
 };
+
+// export our configuration
+module.exports = awsconfig;
