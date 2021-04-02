@@ -13,7 +13,7 @@
         const password = $passwordFld.val();
         $unsuccessAlert.hide();
 
-        fetch('/signIn' , {
+        fetch('authenticate/signIn' , {
             method : 'post',
             body : JSON.stringify({email: emailAddress, password: password}),
             headers: {

@@ -57,7 +57,7 @@
             return;
         }
 
-        fetch('/register' , {
+        fetch('authenticate/register' , {
             method : 'post',
             body : JSON.stringify({firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, birthDate: "15/10/1980", gender: "25",
                 emailAddress : emailAddress, password : password}),
@@ -96,7 +96,7 @@
         successAlert.hide();
         verifyUnsuccessAlert.hide();
         const code = enterCodeFld.val();
-        fetch('/verify' , {
+        fetch('authenticate/verify' , {
             method : 'post',
             body : JSON.stringify({verificationCode: code , email: userName}),
             headers: {
@@ -157,7 +157,7 @@
         let formData = new FormData();
         formData.append('file', file);
 
-        fetch('/upload' , {
+        fetch('authenticate/upload' , {
             method : 'post',
             body : formData,
             headers: {
