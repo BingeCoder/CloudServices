@@ -24,7 +24,7 @@ function findActivity() {
 }
 
 function getCognitoUserDetails(){
-    fetch('/cognito/users' ,{
+    fetch('authenticate/cognito/users' ,{
         method : 'get',
         headers: {
             'content-type': 'application/json'
@@ -69,7 +69,7 @@ function getSkills(usersList , selectedCategory, userName){
 
 function postTweet(){
     const message = "Enterprise Tweet";
-    fetch('/post' , {
+    fetch('authenticate/post' , {
         method : 'post',
         body : JSON.stringify({status:message}),
         headers: {

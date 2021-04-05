@@ -1,30 +1,15 @@
 const express = require('express')
-const bodyParser = require('body-parser');
-const formidable = require('formidable');
+const registerUsingCognito = require('../../../registration/registerUser');
+const verifyUser = require('../../../registration/verifyUser')
+const signInUser = require('../../../registration/signInUser')
+const getUserDetails = require('../../../registration/cognitoUserDetails')
+const uploadFilesToS3 = require('../../../s3_bucket/uploadfileonbucket');
+const postTwitter = require('../../../twitter/postTwitter');
+const deleteCognitoUser = require('../../../registration/cognitoDeleteUser');
+var router = express.Router();
 
-const app = express()
-const TAG = 'App.database';
-var session = require('express-session')
-
-app.use(express.static('static', {index: 'login.html'}));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(session({
-    resave: false,
-    saveUninitialized: true,
-    secret: 'any string'
-}));
-
-
-const registerUsingCognito = require('./registration/registerUser');
-const verifyUser = require('./registration/verifyUser')
-const signInUser = require('./registration/signInUser')
-const getUserDetails = require('./registration/cognitoUserDetails')
-const uploadFilesToS3 = require('./s3_bucket/uploadfileonbucket');
-const postTwitter = require('./twitter/postTwitter');
-const deleteCognitoUser = require('./registration/cognitoDeleteUser');
-
-app.post('/register', function (req, res) {
+router.route('/register')
+post(function (req, res) {
     console.log("Received register post request" + req.body);
     const fName = req.body.firstName;
     const lName = req.body.lastName;
@@ -47,7 +32,8 @@ app.post('/register', function (req, res) {
     });
 });
 
-app.post('/verify', function (req, res) {
+router.route('/verify')
+.post(function (req, res) {
     console.log(TAG + " Received verify post request");
     console.log(req.body);
     const code = req.body.verificationCode;
@@ -67,7 +53,8 @@ app.post('/verify', function (req, res) {
     });
 });
 
-app.post('/signIn', function (req, res) {
+router.route('/signIn')
+.post(function (req, res) {
     console.log(TAG + " Received signIn post request");
     console.log(req.body);
     const email = req.body.email;
@@ -90,7 +77,8 @@ app.post('/signIn', function (req, res) {
     });
 });
 
-app.get('/cognito/users', function (req, res) {
+router.route('/cognito/users')
+.get(function (req, res) {
     console.log("Call For Cognito Users");
     const response =  getUserDetails();
     response.then((response)=>{
@@ -102,7 +90,8 @@ app.get('/cognito/users', function (req, res) {
     });
 });
 
-app.delete('/cognito/user', function (req, res) {
+router.route('/cognito/user')
+.delete(function (req, res) {
     console.log("Call to delete Cognito Users");
     const response =  deleteCognitoUser(req.body.username);
     response.then((response)=>{
@@ -114,8 +103,8 @@ app.delete('/cognito/user', function (req, res) {
     });
 });
 
-
-app.post('/upload', function (req, res) {
+router.route('/upload')
+.post(function (req, res) {
     // new formidable.IncomingForm().parse(req, (err, fields, files) => {
     console.log("Post Upload Request");
     const form = new formidable.IncomingForm();
@@ -141,7 +130,8 @@ app.post('/upload', function (req, res) {
     });
 });
 
-app.post('/post', function (req, res) {
+router.route('/post')
+.post(function (req, res) {
     const promise = postTwitter(req.body);
     promise.then((response)=>{
         res.status(200).send(response);
@@ -150,12 +140,11 @@ app.post('/post', function (req, res) {
     });
 });
 
-app.post('/logout', function (req, res) {
+router.route('/logout')
+.post(function (req, res) {
     console.log("logout");
     req.session.destroy();
     res.send({status: 200});
 });
 
-const server = app.listen(3000);
-
-module.exports = server;
+module.exports = router;

@@ -403,7 +403,7 @@ function addProfilePicInS3(){
     formData.append('file', file);
     formData.append('username',user_name);
 
-    fetch('/upload' , {
+    fetch('authenticate/upload' , {
         method : 'post',
         body : formData
     }).then(response =>
@@ -454,7 +454,7 @@ function showCategory(){
 }
 
 function logout() {
-    fetch('/logout', {
+    fetch('authenticate/logout', {
         method: 'post',
         body: '',
         headers: {

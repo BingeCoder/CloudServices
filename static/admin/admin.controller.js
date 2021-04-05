@@ -6,7 +6,7 @@
     $categoryBtn.click(addCategory);
 
     function logout() {
-        fetch('/logout', {
+        fetch('authenticate/logout', {
             method: 'post',
             body: '',
             headers: {
@@ -23,7 +23,7 @@
         const TAG = "Fetch User Details..."
         console.log("Started...")
 
-        fetch('/cognito/users' ,{
+        fetch('authenticate/cognito/users' ,{
             method : 'get',
             headers: {
                 'content-type': 'application/json'
@@ -84,7 +84,7 @@
                 }
             }
             function deleteUser(username){
-                fetch('/cognito/user' ,{
+                fetch('authenticate/cognito/user' ,{
                     method : 'delete',
                     body : JSON.stringify({username: username}),
                     headers: {
