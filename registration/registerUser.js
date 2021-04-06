@@ -6,12 +6,10 @@ const https = require('https')
 const TAG = 'RegisterUser';
 
 AWS.config.update({
-    region: config.region,
-    // accessKeyId: config.awsUser.accessKeyId,
-    // secretAccessKey: config.awsUser.secretAccessKey
+    region: config.region
 });
 
-const registerUsingCognito = (fName,lName,gender,phone,birthDate,emailAddress,password) => {
+const registerUsingCognito = (fName,lName,gender,phone,emailAddress,password) => {
     console.log("Inside registerUsingCognito");
     const poolData = {
         UserPoolId : config.cognito.userPoolId,
@@ -34,29 +32,24 @@ const registerUsingCognito = (fName,lName,gender,phone,birthDate,emailAddress,pa
         Name: 'phone_number',
         Value: '+01234567890'
     }
-    const birthAttr = {
-        Name: 'birthdate',
-        Value: birthDate
-    }
     const emailAttr = {
         Name:"email",
         Value:emailAddress
     }
-    const pictureAttr = {
-        Name:"picture",
-        Value:"/Users/gunjansrivastava/Desktop/EnterpriseProj/EnterpriseProject/drawables/upload.png"
-    }
+//    const pictureAttr = {
+//        Name:"picture",
+//        Value:"/Users/gunjansrivastava/Desktop/EnterpriseProj/EnterpriseProject/drawables/upload.png"
+//    }
 
     const fNameAttr = new amazonCognitoIdentity.CognitoUserAttribute(firstName);
     const lNameAttr = new amazonCognitoIdentity.CognitoUserAttribute(lastName);
     const genderAttribute = new amazonCognitoIdentity.CognitoUserAttribute(genderAttr);
     const phNoAttr = new amazonCognitoIdentity.CognitoUserAttribute(phoneNumber);
-    const birthdateAttr = new amazonCognitoIdentity.CognitoUserAttribute(birthAttr);
     const emailAddAttr = new amazonCognitoIdentity.CognitoUserAttribute(emailAttr);
-    const pictureAttribute = new amazonCognitoIdentity.CognitoUserAttribute(pictureAttr);
+   // const pictureAttribute = new amazonCognitoIdentity.CognitoUserAttribute(pictureAttr);
 
     return new Promise((resolutionFunc,rejectionFunc) => {
-        userPool.signUp(emailAddress,password,[fNameAttr,lNameAttr,genderAttribute,phNoAttr,birthdateAttr,emailAddAttr,pictureAttribute],
+        userPool.signUp(emailAddress,password,[fNameAttr,lNameAttr,genderAttribute,phNoAttr,emailAddAttr],
             null,(err,data) => {
             if(err){
                 console.log(TAG + " Registration failed");

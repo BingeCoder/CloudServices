@@ -46,7 +46,6 @@
         const lastName = lastNameFld.val();
         const emailAddress = emailAddressFld.val();
         const phoneNumber = phoneNumberFld.val();
-        //const birthDate = birthDateFld.val();
         const password = passwordFld.val();
         const verifyPassword = verifyPasswordFld.val();
 
@@ -59,7 +58,7 @@
 
         fetch('authenticate/register' , {
             method : 'post',
-            body : JSON.stringify({firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, birthDate: "15/10/1980", gender: "25",
+            body : JSON.stringify({firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, gender: "25",
                 emailAddress : emailAddress, password : password}),
             headers: {
                 'content-type': 'application/json'
@@ -81,7 +80,6 @@
                 window.localStorage.setItem('lastName', lastName);
                 window.localStorage.setItem('email', emailAddress);
                 window.localStorage.setItem('phone', phoneNumber);
-                window.localStorage.setItem('birthdate', "xx/xx/xxxx");
                 window.localStorage.setItem('interestedSkills', JSON.stringify(interestedSkillList));
                 const skills = window.localStorage.getItem('interestedSkills');
                 console.log(skills);
@@ -122,7 +120,7 @@
         const lName = window.localStorage.getItem('lastName');
         const email = window.localStorage.getItem('email');
         const phone = window.localStorage.getItem('phone');
-        const birthDate = window.localStorage.getItem('15/10/1980');
+        const birthDate = '15/10/1980';
         const skills = window.localStorage.getItem('interestedSkills');
         console.log(skills);
 
