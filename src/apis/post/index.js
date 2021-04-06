@@ -17,7 +17,7 @@ router.use((req, res, next) => {
 router.route('/addcategory')
 .post((req, res) => {    
     var addCategory = req.body;
-    body = await dynamo.put(addCategory).promise();     
+    body = dynamo.put(addCategory).promise();     
     res.status(200).json(body);
 });
 
@@ -31,7 +31,7 @@ router.route('/addinterestedskill')
     params.UpdateExpression = "SET #Y = list_append(#Y,:y)";
     params.ExpressionAttributeNames = {"#Y": "skills_interested"};                    
     params.ExpressionAttributeValues = { ":y":[req.body.skill] }; 
-    body = await dynamo.update(params).promise();
+    body = dynamo.update(params).promise();
     res.status(200).json(body);
 });
 
@@ -39,7 +39,7 @@ router.route('/adduser')
 .post((req,res) => {
     var userObject = JSON.parse(JSON.stringify(req.body));
     userObject.TableName = "user_details";
-    body = await dynamo.put(userObject).promise();
+    body = dynamo.put(userObject).promise();
     res.status(200).json(body);
     // Adding to Skills Offered Table Not  Required as per DB discussion
 //    var addUserObjectSkillOffered = JSON.parse(JSON.stringify(event.body));
@@ -71,7 +71,7 @@ router.route('/addofferedskill')
     params.UpdateExpression = "SET #Y = list_append(#Y,:y)";
     params.ExpressionAttributeNames = {"#Y": "skills_offered"};
     params.ExpressionAttributeValues = { ":y":[req.body.skill] };
-    body = await dynamo.update(params).promise();
+    body = dynamo.update(params).promise();
     res.status(200).json(body);
 });
 
