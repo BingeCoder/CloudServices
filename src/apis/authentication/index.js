@@ -7,9 +7,10 @@ const uploadFilesToS3 = require('../../../s3_bucket/uploadfileonbucket');
 const postTwitter = require('../../../twitter/postTwitter');
 const deleteCognitoUser = require('../../../registration/cognitoDeleteUser');
 var router = express.Router();
+const TAG = "authentication index file"
 
 router.route('/register')
-post(function (req, res) {
+.post(function (req, res) {
     console.log("Received register post request" + req.body);
     const fName = req.body.firstName;
     const lName = req.body.lastName;
