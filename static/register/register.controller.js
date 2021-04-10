@@ -24,12 +24,21 @@
     signUpBtn.click(register);
     const TAG = 'HandleRegister';
 
-    if(window.localStorage.getItem("facebook")){
-        console.log("---fb--- "+window.localStorage.getItem("facebook"));
-        const signUpObj = JSON.parse(window.localStorage.getItem("facebook"));
-        document.getElementById("firstNameFld").value = signUpObj.first_name;
-        document.getElementById("lastNameFld").value = signUpObj.last_name;
-        document.getElementById("emailAddressFld").value = signUpObj.email;
+    let faceBookLoginInfo = getFacebookLoginInfo();
+    if(faceBookLoginInfo) {
+        console.log(`Facebook login info in register page::: ${faceBookLoginInfo}`);
+        const facebook = JSON.parse(faceBookLoginInfo);        
+        if(facebook.first_name){
+            document.getElementById("firstNameFld").value = facebook.first_name;
+        }
+
+        if(facebook.last_name){
+            document.getElementById("lastNameFld").value = facebook.last_name;
+        }
+
+        if(facebook.email){
+            document.getElementById("emailAddressFld").value = facebook.email;
+        }                                
     }
 
     function register(){
@@ -187,5 +196,15 @@
         }
         alert("You have entered an invalid email address!")
         return false
+    }
+
+    function getFacebookLoginInfo(){
+        const queryString = window.location.search;
+        console.log(`Query::: ${queryString}`);
+        const params = new URLSearchParams(queryString);
+        if(params.has('facebook')){                        
+            return decodeURIComponent(queryString.substring(queryString.indexOf('facebook=') + 9));
+        }
+        return null;
     }
 })();

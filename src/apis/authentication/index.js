@@ -9,8 +9,8 @@ const deleteCognitoUser = require('../../../registration/cognitoDeleteUser');
 var router = express.Router();
 const TAG = "authentication index file"
 
-router.route('/register')
-.post(function (req, res) {
+router.route('/register').
+post(function (req, res) {
     console.log("Received register post request" + req.body);
     const fName = req.body.firstName;
     const lName = req.body.lastName;
