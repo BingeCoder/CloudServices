@@ -3,8 +3,6 @@ const config = require('../config');
 
 AWS.config.update({
     region: config.region,
-    // accessKeyId:"AKIASVVO2J7KA6LLHABK",
-    // secretAccessKey:"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"
 });
 
 function getUserDetails() {
