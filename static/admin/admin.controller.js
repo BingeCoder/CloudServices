@@ -53,9 +53,9 @@
         for(let i=0; i<files.Users.length; i++){
             const user = files.Users[i];
 
-            const firstName = user.Attributes[6].Value;
-            const lastName = user.Attributes[7].Value;
-            const emailAddress = user.Attributes[8].Value;
+            const firstName = user.Attributes[5].Value;
+            const lastName = user.Attributes[6].Value;
+            const emailAddress = user.Attributes[7].Value;
             const userCreateDate = user.UserCreateDate;
             const username =  user.Username;
             let data = [firstName,lastName,emailAddress,userCreateDate];

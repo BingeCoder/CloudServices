@@ -1,6 +1,6 @@
 <script>
     document.getElementById("logoutBtn").onclick = function () {
-        fetch('/logout', {
+        fetch('authenticate/logout', {
             method: 'post',
             body: '',
             headers: {
