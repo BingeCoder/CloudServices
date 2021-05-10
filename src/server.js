@@ -4,7 +4,7 @@ var authenticate = require('./apis/authentication');
 const bodyParser = require('body-parser');
 var session = require('express-session')
 
-const PORT = 80; 
+const PORT = 8080; 
 
 async function startServer(){
 
