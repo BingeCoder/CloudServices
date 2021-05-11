@@ -1,4 +1,5 @@
-const express = require('express')
+const express = require('express');
+const formidable = require('formidable');
 const registerUsingCognito = require('../../../registration/registerUser');
 const verifyUser = require('../../../registration/verifyUser')
 const signInUser = require('../../../registration/signInUser')

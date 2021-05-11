@@ -2,7 +2,7 @@ const AWS = require('aws-sdk');
 const config = require('../config');
 
 AWS.config.update({
-    region: config.region,
+    region: config.region
 });
 
 function getUserDetails() {
@@ -20,8 +20,6 @@ function getUserDetails() {
                 console.log('Skills Details Success...');
                 console.log(JSON.stringify(data));
                 resolve(data);
-
-
             } else {
                 console.log('Skills Details Error...');
                 console.log(JSON.stringify(err));

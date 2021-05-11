@@ -5,11 +5,8 @@ const amazonCognitoIdentity = require('amazon-cognito-identity-js')
 const TAG = 'signInUser';
 
 AWS.config.update({
-    region: config.region,
-    // accessKeyId: config.awsUser.accessKeyId,
-    // secretAccessKey: config.awsUser.secretAccessKey
+    region: config.region
 });
-
 
 function signInUser(email,password) {
     const poolData = {
