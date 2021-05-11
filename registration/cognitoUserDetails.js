@@ -1,9 +1,7 @@
 const AWS = require('aws-sdk');
 const config = require('../config');
 
-AWS.config.update({
-    accessKeyId: config.consumer_key,
-    secretAccessKey: config.consumer_secret,
+AWS.config.update({    
     region: config.region
 });
 
