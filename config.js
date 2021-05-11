@@ -1,8 +1,10 @@
 module.exports = {
     region: 'us-west-2',
     cognito: {
-        userPoolId: 'us-west-2_8hZOg9XbX',
-        clientId: '2g75vqrnh8a1tjlp9ukbvk8it7'
+        userPoolId: 'us-west-2_5yUfbE3sP',
+        clientId: '2ltld13v2ounfbr2ov04iis7sv'
+        // userPoolId: 'us-west-2_8hZOg9XbX',
+        // clientId: '2g75vqrnh8a1tjlp9ukbvk8it7'
     },
     s3: {
         bucketName: 'find-me-a-buddy',
