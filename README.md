@@ -7,6 +7,7 @@
 ## Anupama Kurudi - https://www.linkedin.com/in/anupamakn/
 ## Gunjan Srivastava - https://www.linkedin.com/in/gunjan-android
 ## Shivam Tomar - [LinkedIn](https://www.linkedin.com/in/shivam-tomar/)
+## Krishna Jha
 
 ## Problem 
 Enterprises have a diverse group of employees from different backgrounds, all of them possessing a wide range of skill sets. Employees can learn a skill they lack, or teach a skill they possess, from/to a fellow employee. Enterprises often overlook utilizing this self-learning “skill-sharing” opportunity. Having a platform to utilize this opportunity can lead to a more proficient,well-rounded and close-knit workforce. Such a platform, where the employees teach or learn skills from each other is missing to the best of our knowledge.
