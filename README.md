@@ -1,7 +1,7 @@
-# EnterpriseProject
+# Cloud Services
 
 ## University Name: http://www.sjsu.edu/ 
-## Course: Enterprise SW Platform
+## Course: Cloud Services
 ## Professor: Andrew Bond
 ## Student: 
 ## Anupama Kurudi - https://www.linkedin.com/in/anupamakn/
@@ -10,11 +10,10 @@
 ## Krishna Jha
 
 ## Problem 
-Enterprises have a diverse group of employees from different backgrounds, all of them possessing a wide range of skill sets. Employees can learn a skill they lack, or teach a skill they possess, from/to a fellow employee. Enterprises often overlook utilizing this self-learning “skill-sharing” opportunity. Having a platform to utilize this opportunity can lead to a more proficient,well-rounded and close-knit workforce. Such a platform, where the employees teach or learn skills from each other is missing to the best of our knowledge.
+Knowledge industry have a diverse group of intellectual workforce/professionals from different backgrounds, all of them possessing a wide range of skill sets. Lerner can learn a skill they lack, or teach a skill they possess, from/to a fellow Lerners. During covid-19 pandemic people often overlook utilizing this self-learning “skill-sharing” opportunity. Having a platform to utilize this opportunity can lead to a more proficient,well-rounded and close-knit employment opportunities. Such a platform, where the people teach or learn skills from each other is missing to the best of our knowledge.
 
 ## Solution 
-FindMeABuddy is an enterprise software platform where employees of a company come together as a community to help each other learn skills. These skills could range anywhere from learning programming languages, coding or learning a new tool - to - driving, guitar classes or learning, yoga etc.
-Employees can register, login and create a profile with details such as name, designation, department, skills they are willing to teach and skills they are looking for or interested to learn. Employees can create a session/class with title, timings and brief description on what is being offered in the class.
+SkillShare is an Cloud software platform where intellectual workforce/professionals come together as a community to help each other learn skills. These skills could range anywhere from learning programming languages, coding or learning a new tool - to - driving, guitar classes or learning, yoga etc. Lerner can register, login and create a profile with details such as name, designation, department, skills they are willing to teach and skills they are looking for or interested to learn. lerner can create a session/class with title, timings and brief description on what is being offered in the class.
 
 ## Technologies Used
  
