@@ -7,6 +7,7 @@
 ## Anupama Kurudi - https://www.linkedin.com/in/anupamakn/
 ## Gunjan Srivastava - https://www.linkedin.com/in/gunjan-android
 ## Shivam Tomar - [LinkedIn](https://www.linkedin.com/in/shivam-tomar/)
+## Krishna Jha
 
 ## Problem 
 Enterprises have a diverse group of employees from different backgrounds, all of them possessing a wide range of skill sets. Employees can learn a skill they lack, or teach a skill they possess, from/to a fellow employee. Enterprises often overlook utilizing this self-learning “skill-sharing” opportunity. Having a platform to utilize this opportunity can lead to a more proficient,well-rounded and close-knit workforce. Such a platform, where the employees teach or learn skills from each other is missing to the best of our knowledge.
@@ -56,6 +57,10 @@ CI Pipeline
 "	API Gateway
 "	Lambda Functions
 "	S3
+
+## Skillshare Infra
+Skillshare Continuous Delivery process that used to automate whole K8s release workflow, including managing configuration changes of a K8s Deployment, deployments of code changes, managing Dockerfile updates, building Docker images and pushing them to the Docker registry, applying new images on your K8s cluster, Stack used are
+Jenkins Server, DockerHub, Docker, Terraform, Ansible , Kubernetes EKS (Kubectl | K8 Continues deploy | K8 Credentials).
 
 ## Admin Portal
 
