@@ -118,7 +118,7 @@ function getActivitySignedUpFor() {
                                   <h6>Date & Time: <span class="text-black">` + getDay(time) + `, ` + getTime(time) + `</span> </h6> 
                                   <h6 class="capitalize">Capacity: <span class="text-black">` + capacity + `</span> </h6> 
                                   <button class="btn btn-info float-right" onClick= "unEnroll('` + user_name + `','` + activity_name + `')">
-                                  <img style="margin-right: 5px;" src="./svg/leave.png" width="20px" height="18px">Unenroll</button>
+                                  <img style="margin-right: 5px;" src="./svg/leave.png" width="20px" height="18px">Disenroll</button>
                                   
                                 </div>
                               </div>
@@ -317,7 +317,7 @@ async function unEnroll(user_name, activity_name) {
   var theResult = false;
 
   if (willDelete === true) {
-    swal("Unenrolled Successfully!", {
+    swal("Disenrolled Successfully!", {
       icon: "success",
     });
     let data = {
