@@ -10,10 +10,12 @@
 ## Krishna Jha
 
 ## Problem 
-Knowledge industry have a diverse group of intellectual workforce/professionals from different backgrounds, all of them possessing a wide range of skill sets. Lerner can learn a skill they lack, or teach a skill they possess, from/to a fellow Lerners. During covid-19 pandemic people often overlook utilizing this self-learning “skill-sharing” opportunity. Having a platform to utilize this opportunity can lead to a more proficient,well-rounded and close-knit employment opportunities. Such a platform, where the people teach or learn skills from each other is missing to the best of our knowledge.
+SkillShare.
+An free online learning community where members create and attend classes on topics ranging from illustration, design, photography, video, freelancing, and more. 
 
 ## Solution 
-SkillShare is a Cloud software platform where intellectual workforce/professionals come together as a community to help each other learn skills. These skills could range anywhere from learning programming languages, coding or learning a new tool - to - driving, guitar classes or learning, yoga etc. Lerner can register, login and create a profile with details such as name, designation, department, skills they are willing to teach and skills they are looking for or interested to learn. lerner can create a session/class with title, timings and brief description on what is being offered in the class.
+SkillShare is an web platform where users come together as a community to help each other learn skills. These skills could range any wide range of topics from teaching/learning programming languages, coding or learning a new tool - to - guitar, voilin, marketing stragtegies or 3D animation, Yoga etc.
+Users can register, login and create a profile with details such as name, email id, interests and skills they are willing to teach and skills they are interested to learn. Users can create a session/class with title, timings and brief description on what is being offered in the class.
 
 ## Technologies Used
  
@@ -33,17 +35,19 @@ AWS VPC
 Github actions
 
 ## Feature List
-SSO Registration, Verification and Login 
-Admin Portal - Special controls
-Add / Delete Category
-User Dashboard - Employee profile
-Create Activities - Offer a skill / create a group activity
-FindActivities - filter activities based on Categories
-Enroll - sign up for an activity
-Dis-enroll - Leave an activity
-Create and delete an activity
-Logout and login as a different user
-CI Pipeline
+####SSO Registration, Verification and Login 
+####Facebook Login
+####Social media links
+####Admin Portal - Special controls
+####Add / Delete Category
+####User Dashboard - User profile and upload a profile picture to the S3 bucket.
+####Create a class - Offer a skill / create a group activity
+####Find Classes - filter activities based on Categories
+####Enroll to a class - sign up for a class
+####Dis-enroll from a class - Leave a class
+####Create and delete classes
+####Logout and login as a customer/admin
+####CI/CD Pipeline
 
 ## Pre-requisites Set Up
 ## AWS resources required
@@ -77,9 +81,9 @@ Password: Gunjan@123
 
 User dashboard is craeted for all the users who successfully logs into he website.
 
-1. user can create new activities
-2. view all the activities that he has previously created
-3. dis enroll for the activities he as signed up for
+1. User can create new activities
+2. View all the activities that he has previously created
+3. Disenroll for the activities he as signed up for
 4. Find new activities
 5. enroll for new activities
 6. Delete the activities create by the user
