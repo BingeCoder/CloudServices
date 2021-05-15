@@ -17,33 +17,33 @@ SkillShare is a Cloud software platform where intellectual workforce/professiona
 
 ## Technologies Used
  
-AWS for setting up infrastructure
-HTML, Javascript,CSS
-Bootstrap
-Node.js
-AWS Cognito
-S3 
-DynamoDB
-Lambda Functions
-API Gateway
-EC2 Instance
-Route 53 for DNS
-Network safety Group
-AWS VPC
-Github actions
+- AWS for setting up infrastructure
+- HTML, Javascript,CSS
+- Bootstrap
+- Node.js
+- AWS Cognito
+- S3 
+- DynamoDB
+- Lambda Functions
+- API Gateway
+- EC2 Instance
+- Route 53 for DNS
+- Network safety Group
+- AWS VPC
+- Github actions
 
 ## Feature List
-SSO Registration, Verification and Login 
-Admin Portal - Special controls
-Add / Delete Category
-User Dashboard - Employee profile
-Create Activities - Offer a skill / create a group activity
-FindActivities - filter activities based on Categories
-Enroll - sign up for an activity
-Dis-enroll - Leave an activity
-Create and delete an activity
-Logout and login as a different user
-CI Pipeline
+- SSO Registration, Verification and Login 
+- Admin Portal - Special controls
+- Add / Delete Category
+- User Dashboard - Employee profile
+- Create Activities - Offer a skill / create a group activity
+- FindActivities - filter activities based on Categories
+- Enroll - sign up for an activity
+- Dis-enroll - Leave an activity
+- Create and delete an activity
+- Logout and login as a different user
+- CI/CD Pipeline
 
 ## Pre-requisites Set Up
 ## AWS resources required
