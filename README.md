@@ -1,7 +1,7 @@
-# EnterpriseProject
+# Cloud Services
 
 ## University Name: http://www.sjsu.edu/ 
-## Course: Enterprise SW Platform
+## Course: Cloud Services
 ## Professor: Andrew Bond
 ## Student: 
 ## Anupama Kurudi - https://www.linkedin.com/in/anupamakn/
@@ -81,9 +81,9 @@ Password: Gunjan@123
 
 User dashboard is craeted for all the users who successfully logs into he website.
 
-1. user can create new activities
-2. view all the activities that he has previously created
-3. dis enroll for the activities he as signed up for
+1. User can create new activities
+2. View all the activities that he has previously created
+3. Disenroll for the activities he as signed up for
 4. Find new activities
 5. enroll for new activities
 6. Delete the activities create by the user

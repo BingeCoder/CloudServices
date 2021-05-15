@@ -469,5 +469,7 @@ function logout() {
 
 retriveProfile();
 function retriveProfile() {
-    profileImg[0].src = "https://find-me-a-buddy.s3-us-west-2.amazonaws.com/" + user_name + "/logo.png";
+    if(profileImg[0]) {
+        profileImg[0].src = "https://find-me-a-buddy.s3-us-west-2.amazonaws.com/" + user_name + "/logo.png";
+    }
 }

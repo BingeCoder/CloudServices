@@ -116,6 +116,9 @@ router.route('/upload')
         console.log(fields.username);
         // console.log(fields);
         // console.log(req.session.currentUser);
+        if(!files.file){
+            res.send({status: 404});
+        }
         const response = uploadFilesToS3(files.file,fields.username);
         response.then((response) => {
             res.send(response);
